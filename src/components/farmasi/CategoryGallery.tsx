@@ -11,25 +11,25 @@ const categories = [
   {
     title: 'Premium Skincare',
     description: 'Nourishing serums, creams for healthy glow.',
-    image: '/images/farmasi/category-skincare.jpg',
+    image: '/images/EKOKOSHA_ALLBARIN1VIEW.jpeg',
     link: '/farmasi/skincare',
   },
   {
     title: 'Professional Makeup',
     description: 'Long-lasting, skin-friendly cosmetics.',
-    image: '/images/farmasi/category-makeup.jpg',
+    image: '/images/lipgloss (1).jpeg',
     link: '/farmasi/makeup',
   },
   {
     title: 'Daily Essentials',
     description: 'Natural soaps, body care for wellness routines.',
-    image: '/images/farmasi/category-essentials.jpg',
+    image: '/images/EKOKOSHA_CREAMSALL-IN1-VIEW.jpeg',
     link: '/farmasi/essentials',
   },
   {
     title: 'Health Nutrition',
     description: 'Supplements supporting nurse wellness.',
-    image: '/images/farmasi/category-nutrition.jpg',
+    image: '/images/EKOKOSHA_BAR41.jpeg',
     link: '/farmasi/nutrition',
   },
 ];

@@ -19,11 +19,8 @@ const products = [
       'Dermatologically tested formulas'
     ],
     images: [
-      '/images/farmasi/skincare-1.jpg',
-      '/images/farmasi/skincare-2.jpg',
-      '/images/farmasi/skincare-3.jpg',
-      '/images/farmasi/skincare-4.jpg',
-      '/images/farmasi/skincare-5.jpg',
+      '/images/EKOKOSHA_ALLBARIN1VIEW.jpeg',
+    
     ],
     buttonText: 'Shop Skincare',
     buttonLink: '/farmasi/skincare',
@@ -40,7 +37,7 @@ const products = [
       'Hypoallergenic options for sensitive skin'
     ],
     images: [
-      '/images/farmasi/makeup-1.jpg',
+      '/images/lipgloss (1).jpeg',
       '/images/farmasi/makeup-2.jpg',
       '/images/farmasi/makeup-3.jpg',
       '/images/farmasi/makeup-4.jpg',
@@ -61,7 +58,7 @@ const products = [
       'Eco-friendly packaging'
     ],
     images: [
-      '/images/farmasi/essentials-1.jpg',
+      '/images/EKOKOSHA_CREAMSALL-IN1-VIEW.jpeg',
       '/images/farmasi/essentials-2.jpg',
       '/images/farmasi/essentials-3.jpg',
       '/images/farmasi/essentials-4.jpg',
@@ -82,7 +79,7 @@ const products = [
       'Natural stress relief formulas'
     ],
     images: [
-      '/images/farmasi/nutrition-1.jpg',
+      '/images/EKOKOSHA_BAR41.jpeg',
       '/images/farmasi/nutrition-2.jpg',
       '/images/farmasi/nutrition-3.jpg',
       '/images/farmasi/nutrition-4.jpg',
@@ -107,51 +104,30 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
       className={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-white' : product.bgColor}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+        <div className={`grid lg:grid-cols-2 gap-12 items-stretch ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
           
-          {/* Image Gallery - Left or Right based on index */}
+          {/* Single Image - Left or Right based on index */}
           <motion.div
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className={`order-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
           >
-            <div className="grid grid-cols-3 gap-3">
-              {/* Large main image */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="col-span-3 mb-3"
-              >
-                <div className="relative h-[300px] rounded-2xl overflow-hidden shadow-xl">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.title}
-                    fill
-                    className="object-cover hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-              </motion.div>
-              
-              {/* 4 smaller images */}
-              {product.images.slice(1, 5).map((img, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + (idx * 0.1) }}
-                  className="relative h-[120px] rounded-lg overflow-hidden shadow-md"
-                >
-                  <Image
-                    src={img}
-                    alt={`${product.title} ${idx + 2}`}
-                    fill
-                    className="object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </motion.div>
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="h-full"
+            >
+              <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl shadow-xl lg:min-h-[520px]">
+                <Image
+                  src={product.images[0]}
+                  alt={product.title}
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Content */}
