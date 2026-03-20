@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     template: '%s | JL Nurse & Wellness'
   },
   icons: {
-    icon: '/images/JLLOGO.jpg',
-    shortcut: '/images/JLLOGO.jpg',
-    apple: '/images/JLLOGO.jpg',
+    icon: '/images/fev.png',
+    shortcut: '/images/fev.png',
+    apple: '/images/fev.png',
   },
   description: 'Helping RPNs & RNs build profitable nursing agencies and create income beyond bedside work. Free strategy calls and starter guides.',
   keywords: 'nurse agency, nursing business, RPN entrepreneur, RN business, Canadian nurses, healthcare entrepreneurship',

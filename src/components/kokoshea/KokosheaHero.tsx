@@ -1,50 +1,43 @@
-// src/components/kokoshea/KokosheaHero.tsx
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+
+const heroImage = '/images/2b37b2b-2f1a-48e0-87a4-611b1923dba3.webp';
 
 export default function KokosheaHero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-primary">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/kokoshea/kokoshea-hero.jpg"
-          alt="Kokoshea Natural Skincare"
+          src={heroImage}
+          alt="Kokoshea product hero background"
           fill
-          className="object-cover"
           priority
+          sizes="100vw"
           quality={100}
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-primary/70"></div>
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,161,74,0.14),_transparent_45%)]" />
       </div>
 
-      {/* Animated floating leaves/nature elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 opacity-20 animate-float">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M50 10C30 10 15 25 15 45C15 65 30 80 50 80C70 80 85 65 85 45C85 25 70 10 50 10Z" fill="#C9A14A" fillOpacity="0.3"/>
-        </svg>
-      </div>
-      <div className="absolute bottom-20 right-20 w-40 h-40 opacity-20 animate-float" style={{ animationDelay: '1s' }}>
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="40" fill="#C9A14A" fillOpacity="0.3"/>
-        </svg>
-      </div>
+      <div className="pointer-events-none absolute left-8 top-20 z-10 hidden h-28 w-28 rounded-full border border-gold/30 bg-white/10 blur-sm lg:block" />
+      <div className="pointer-events-none absolute bottom-16 right-10 z-10 hidden h-36 w-36 rounded-full border border-gold/20 bg-gold/10 blur-sm lg:block" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 py-20">
+      <div className="relative z-20 mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl text-center"
         >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-gold/30"
+            className="mb-6 inline-block rounded-full border border-gold/30 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold backdrop-blur-sm"
           >
             Natural Skincare
           </motion.span>
@@ -53,39 +46,39 @@ export default function KokosheaHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-            style={{ textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}
+            className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+            style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.35)' }}
           >
-            Inspired by{' '}
-            <span className="text-gold">Wellness</span>
+            Pure Care, Beautiful Glow,{' '}
+            <span className="text-gold">Naturally Kokoshea</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
-            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+            className="mx-auto mb-8 max-w-2xl text-lg text-white/90 sm:text-xl md:text-2xl"
+            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.35)' }}
           >
-            Kokoshea is built around the philosophy that skincare should be natural, 
-            nourishing, and empowering.
+            Kokoshea brings together nature-inspired beauty and nourishing care,
+            with the hero message sitting above a rich product-led background.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col justify-center gap-4 sm:flex-row"
           >
             <Link
               href="/kokoshea#products"
-              className="bg-gold text-primary px-8 py-4 rounded-btn font-bold text-lg hover:bg-gold-dark transition transform hover:scale-105 shadow-2xl"
+              className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary shadow-2xl transition hover:scale-105 hover:bg-gold-dark"
             >
               Discover Kokoshea
             </Link>
             <Link
               href="/kokoshea#partner"
-              className="border-2 border-white bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-btn font-bold text-lg hover:bg-white hover:text-primary-dark transition transform hover:scale-105"
+              className="rounded-btn border-2 border-white bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:text-primary-dark"
             >
               Become a Partner
             </Link>

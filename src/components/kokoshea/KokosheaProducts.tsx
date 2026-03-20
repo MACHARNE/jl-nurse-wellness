@@ -1,11 +1,49 @@
 // src/components/kokoshea/KokosheaProducts.tsx
 'use client';
 
-import { useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+
+const bodyButterImages = [
+  '/images/EKOKOSHA-ALL-NATURAL-TURMERIC-SHEABUTTER.jpeg',
+  '/images/EKOKOSHA-ALL-NATURAL-TURMERIC-SHEABUTTER-OPEND.jpeg',
+  '/images/EKOKOSHA-ALL-NATURAL-TURMERIC-SHEABUTTER-WITHOUTLABEL.jpeg',
+  '/images/EKOKOSHA_TORONTO-ORGANIC-COCONUT+SHA-BUTTER.jpeg',
+];
+
+const naturalSoapImages = [
+  '/images/natural_soap (1).jpeg',
+  '/images/natural_soap (2).jpeg',
+  '/images/natural_soap (3).jpeg',
+  '/images/natural_soap (4).jpeg',
+];
+
+const moisturizerImages = [
+  '/images/Moisturizers (1).jpeg',
+  '/images/Moisturizers (2).jpeg',
+  '/images/Moisturizers (3).jpeg',
+  '/images/Moisturizers (4).jpeg',
+];
+
+const lipGlossImages = [
+  '/images/lipgloss (1).jpeg',
+  '/images/lipgloss (2).jpeg',
+  '/images/lipgloss (3).jpeg',
+];
+
+const serumImages = [
+  '/images/SERUM (1).jpeg',
+  '/images/SERUM (2).jpeg',
+  '/images/SERUM (3).jpeg',
+  '/images/SERUM (4).jpeg',
+];
+
+const facialOilImages = [
+  '/images/face-cream.jpeg',
+  '/images/EKOKOSHA_ANTI-SGING-SERUM_&ANTI-AGING-NIGHT-SCREM-DIFF-VIEW.jpeg',
+];
 
 const products = [
   {
@@ -13,7 +51,7 @@ const products = [
     name: 'Body Butter',
     description: 'Rich, nourishing body butter for deep hydration',
     price: '$32',
-    image: '/images/kokoshea/body-butter.jpg',
+    image: bodyButterImages[0],
     category: 'Body Care',
   },
   {
@@ -21,7 +59,7 @@ const products = [
     name: 'Facial Oils',
     description: 'Lightweight oils that balance and rejuvenate',
     price: '$28',
-    image: '/images/kokoshea/facial-oil.jpg',
+    image: facialOilImages[0],
     category: 'Face Care',
   },
   {
@@ -29,7 +67,7 @@ const products = [
     name: 'Moisturizers',
     description: 'Daily hydration for healthy, glowing skin',
     price: '$35',
-    image: '/images/kokoshea/moisturizer.jpg',
+    image: moisturizerImages[0],
     category: 'Face Care',
   },
   {
@@ -37,7 +75,7 @@ const products = [
     name: 'Natural Soaps',
     description: 'Gentle, handmade soaps with natural ingredients',
     price: '$12',
-    image: '/images/kokoshea/soap.jpg',
+    image: naturalSoapImages[0],
     category: 'Body Care',
   },
   {
@@ -45,7 +83,7 @@ const products = [
     name: 'Lip Balms',
     description: 'Nourishing lip care for soft, smooth lips',
     price: '$8',
-    image: '/images/kokoshea/lip-balm.jpg',
+    image: lipGlossImages[0],
     category: 'Lip Care',
   },
   {
@@ -53,21 +91,101 @@ const products = [
     name: 'Face Serums',
     description: 'Targeted treatments for specific skin concerns',
     price: '$42',
-    image: '/images/kokoshea/serum.jpg',
+    image: serumImages[0],
     category: 'Face Care',
   },
 ];
 
 export default function KokosheaProducts() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [bodyButterIndex, setBodyButterIndex] = useState(0);
+  const [facialOilIndex, setFacialOilIndex] = useState(0);
+  const [naturalSoapIndex, setNaturalSoapIndex] = useState(0);
+  const [moisturizerIndex, setMoisturizerIndex] = useState(0);
+  const [lipGlossIndex, setLipGlossIndex] = useState(0);
+  const [serumIndex, setSerumIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const cardsPerView = 3;
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setBodyButterIndex((current) => (current + 1) % bodyButterImages.length);
+    }, 2200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setFacialOilIndex((current) => (current + 1) % facialOilImages.length);
+    }, 2500);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setNaturalSoapIndex((current) => (current + 1) % naturalSoapImages.length);
+    }, 2400);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setMoisturizerIndex((current) => (current + 1) % moisturizerImages.length);
+    }, 2300);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setLipGlossIndex((current) => (current + 1) % lipGlossImages.length);
+    }, 2100);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setSerumIndex((current) => (current + 1) % serumImages.length);
+    }, 2250);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   const categories = ['All', ...new Set(products.map(p => p.category))];
   
   const filteredProducts = activeCategory === 'All' 
     ? products 
     : products.filter(p => p.category === activeCategory);
+  const totalSlides = Math.max(1, filteredProducts.length - cardsPerView + 1);
+
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    if (totalSlides <= 1 || isCarouselHovered) return;
+
+    const interval = window.setInterval(() => {
+      setCurrentSlide((current) => (current + 1) % totalSlides);
+    }, 3200);
+
+    return () => window.clearInterval(interval);
+  }, [isCarouselHovered, totalSlides]);
+
+  const goToPreviousSlide = () => {
+    setCurrentSlide((current) => (current - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((current) => (current + 1) % totalSlides);
+  };
 
   return (
     <section ref={ref} className="py-20 md:py-28 bg-background overflow-hidden">
@@ -108,65 +226,204 @@ export default function KokosheaProducts() {
           ))}
         </motion.div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="relative h-[300px] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 right-4 bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    {product.price}
+        {/* Products Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="group relative overflow-hidden"
+          onMouseEnter={() => setIsCarouselHovered(true)}
+          onMouseLeave={() => setIsCarouselHovered(false)}
+        >
+          <button
+            type="button"
+            onClick={goToPreviousSlide}
+            aria-label="Previous products"
+            className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-gold/30 bg-white/95 text-primary shadow-lg opacity-0 transition-all duration-300 hover:border-gold hover:bg-gold/10 group-hover:opacity-100"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={goToNextSlide}
+            aria-label="Next products"
+            className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-gold/30 bg-white/95 text-primary shadow-lg opacity-0 transition-all duration-300 hover:border-gold hover:bg-gold/10 group-hover:opacity-100"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <motion.div
+            animate={{ x: `-${currentSlide * (100 / cardsPerView)}%` }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            className="flex"
+          >
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="group w-full shrink-0 px-3 md:w-1/2 lg:w-1/3"
+              >
+                <div className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <div className="relative h-[300px] overflow-hidden">
+                    {product.id === 1 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={bodyButterImages[bodyButterIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={bodyButterImages[bodyButterIndex]}
+                            alt={`${product.name} ${bodyButterIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : product.id === 2 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={facialOilImages[facialOilIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={facialOilImages[facialOilIndex]}
+                            alt={`${product.name} ${facialOilIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : product.id === 3 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={moisturizerImages[moisturizerIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={moisturizerImages[moisturizerIndex]}
+                            alt={`${product.name} ${moisturizerIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : product.id === 4 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={naturalSoapImages[naturalSoapIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={naturalSoapImages[naturalSoapIndex]}
+                            alt={`${product.name} ${naturalSoapIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : product.id === 5 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={lipGlossImages[lipGlossIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={lipGlossImages[lipGlossIndex]}
+                            alt={`${product.name} ${lipGlossIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : product.id === 6 ? (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={serumImages[serumIndex]}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.8, ease: 'easeInOut' }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={serumImages[serumIndex]}
+                            alt={`${product.name} ${serumIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    ) : (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold">
+                      {product.category}
+                    </span>
+                    <h3 className="mb-2 mt-1 text-xl font-bold text-primary">
+                      {product.name}
+                    </h3>
+                    <p className="mb-4 text-sm text-gray-600">
+                      {product.description}
+                    </p>
+                    <Link
+                      href={`/kokoshea/products/${product.id}`}
+                      className="inline-flex items-center font-semibold text-gold transition-colors hover:text-gold-dark"
+                    >
+                      Learn More
+                      <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                   </div>
                 </div>
-                <div className="p-6">
-                  <span className="text-xs text-gold font-semibold uppercase tracking-wider">
-                    {product.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-primary mt-1 mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    {product.description}
-                  </p>
-                  <Link
-                    href={`/kokoshea/products/${product.id}`}
-                    className="inline-flex items-center text-gold font-semibold hover:text-gold-dark transition-colors"
-                  >
-                    Learn More
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </motion.div>
+        </motion.div>
 
-        {/* Carousel/Dots for mobile */}
+        {/* Carousel Dots */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex justify-center gap-2 mt-8 md:hidden"
+          className="mt-8 flex justify-center gap-2"
         >
-          {[...Array(Math.ceil(filteredProducts.length / 2))].map((_, i) => (
+          {Array.from({ length: totalSlides }).map((_, i) => (
             <div
               key={i}
               className={`w-2 h-2 rounded-full transition-colors ${
-                i === 0 ? 'bg-gold' : 'bg-gray-300'
+                i === currentSlide ? 'bg-gold' : 'bg-gray-300'
               }`}
             />
           ))}

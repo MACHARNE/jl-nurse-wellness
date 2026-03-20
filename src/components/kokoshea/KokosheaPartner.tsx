@@ -111,7 +111,7 @@ export default function KokosheaPartner() {
               className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/kokoshea/partner.jpg"
+                src="/images/parnership.jpg"
                 alt="Kokoshea Partner"
                 fill
                 className="object-cover"
