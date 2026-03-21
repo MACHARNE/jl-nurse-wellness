@@ -7,7 +7,17 @@ import { motion } from 'framer-motion';
 export default function FarmasiHero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80"></div>
+      <div className="absolute inset-0 z-0">
+        <video
+          src="/video/FARMASI.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       <div className="absolute top-20 right-20 w-64 h-64 bg-gold/20 rounded-full blur-3xl animate-pulseSlow z-0"></div>
       <div className="absolute bottom-20 left-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl animate-pulseSlow z-0" style={{ animationDelay: '2s' }}></div>
