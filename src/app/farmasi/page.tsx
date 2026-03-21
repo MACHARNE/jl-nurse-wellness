@@ -1,4 +1,4 @@
-// src/app/farmasi/page.tsx
+﻿// src/app/farmasi/page.tsx
 import { Metadata } from 'next';
 import FarmasiHero from '@/components/farmasi/FarmasiHero';
 import WhyFarmasi from '@/components/farmasi/WhyFarmasi';

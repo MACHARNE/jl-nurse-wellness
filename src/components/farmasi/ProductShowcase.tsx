@@ -1,4 +1,4 @@
-// src/components/farmasi/ProductShowcase.tsx
+﻿// src/components/farmasi/ProductShowcase.tsx
 'use client';
 
 import Image from 'next/image';
@@ -18,10 +18,6 @@ const products = [
       'Natural ingredients, no harsh chemicals',
       'Dermatologically tested formulas'
     ],
-    images: [
-      '/images/EKOKOSHA_ALLBARIN1VIEW.jpeg',
-    
-    ],
     buttonText: 'Shop Skincare',
     buttonLink: '/farmasi/skincare',
     bgColor: 'bg-amber-50',
@@ -35,13 +31,6 @@ const products = [
       'Long-wear foundations and concealers',
       'Pigmented eyeshadows and lipsticks',
       'Hypoallergenic options for sensitive skin'
-    ],
-    images: [
-      '/images/lipgloss (1).jpeg',
-      '/images/farmasi/makeup-2.jpg',
-      '/images/farmasi/makeup-3.jpg',
-      '/images/farmasi/makeup-4.jpg',
-      '/images/farmasi/makeup-5.jpg',
     ],
     buttonText: 'Shop Makeup',
     buttonLink: '/farmasi/makeup',
@@ -57,16 +46,10 @@ const products = [
       'Essential oil blends for relaxation',
       'Eco-friendly packaging'
     ],
-    images: [
-      '/images/EKOKOSHA_CREAMSALL-IN1-VIEW.jpeg',
-      '/images/farmasi/essentials-2.jpg',
-      '/images/farmasi/essentials-3.jpg',
-      '/images/farmasi/essentials-4.jpg',
-      '/images/farmasi/essentials-5.jpg',
-    ],
     buttonText: 'Shop Care',
     buttonLink: '/farmasi/essentials',
     bgColor: 'bg-green-50',
+    image: '/images/essentials1.png',
   },
   {
     id: 4,
@@ -78,16 +61,10 @@ const products = [
       'Protein powders for busy nurses',
       'Natural stress relief formulas'
     ],
-    images: [
-      '/images/EKOKOSHA_BAR41.jpeg',
-      '/images/farmasi/nutrition-2.jpg',
-      '/images/farmasi/nutrition-3.jpg',
-      '/images/farmasi/nutrition-4.jpg',
-      '/images/farmasi/nutrition-5.jpg',
-    ],
     buttonText: 'Shop Nutrition',
     buttonLink: '/farmasi/nutrition',
     bgColor: 'bg-blue-50',
+    image: '/images/HealthNutrition1.webp',
   },
 ];
 
@@ -105,8 +82,6 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className={`grid lg:grid-cols-2 gap-12 items-stretch ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-          
-          {/* Single Image - Left or Right based on index */}
           <motion.div
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -119,18 +94,33 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
               transition={{ duration: 0.5, delay: 0.3 }}
               className="h-full"
             >
-              <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl shadow-xl lg:min-h-[520px]">
-                <Image
-                  src={product.images[0]}
-                  alt={product.title}
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
+              {product.image ? (
+                <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl shadow-xl lg:min-h-[520px]">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              ) : (
+                <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border border-primary/10 bg-gradient-to-br from-white to-primary/5 p-8 shadow-xl lg:min-h-[520px]">
+                  <div className="text-center">
+                    <span className="inline-block rounded-full bg-gold/20 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold">
+                      Farmasi Category
+                    </span>
+                    <h3 className="mt-4 text-2xl font-bold text-primary sm:text-3xl">
+                      {product.title}
+                    </h3>
+                    <p className="mt-3 text-gray-600">
+                      Product visuals removed. Explore details in this section.
+                    </p>
+                  </div>
+                </div>
+              )}
             </motion.div>
           </motion.div>
 
-          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -179,7 +169,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
                   className="flex items-start gap-3"
                 >
                   <span className="w-5 h-5 bg-gold rounded-full flex items-center justify-center text-white text-xs flex-shrink-0 mt-1">
-                    ✓
+                    +
                   </span>
                   <span className="text-gray-700">{feature}</span>
                 </motion.li>

@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function AboutJean() {
@@ -9,7 +8,7 @@ export default function AboutJean() {
     <section className="py-12 sm:py-16 md:py-20 bg-primary text-white"> {/* Changed gradient to solid primary */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left Column - Image */}
+          {/* Left Column - Video */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -17,13 +16,15 @@ export default function AboutJean() {
             viewport={{ once: true }}
             className="order-2 lg:order-1 mt-8 lg:mt-0"
           >
-            <div className="rounded-xl sm:rounded-2xl aspect-square w-full max-w-sm mx-auto relative overflow-hidden shadow-2xl border-4 border-gold/20"> {/* Added gold border */}
-              <Image
-                src="/images/PRODUCT-DISCRIPTION.jpeg"
-                alt="Jean Lewis, RN"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 400px"
+            <div className="rounded-xl sm:rounded-2xl w-full max-w-sm mx-auto relative overflow-hidden shadow-2xl border-4 border-gold/20 bg-black">
+              <video
+                src="/video/meetonwer.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-[420px] sm:h-[520px] object-contain"
               />
             </div>
           </motion.div>

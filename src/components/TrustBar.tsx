@@ -32,10 +32,9 @@ export default function TrustBar() {
           <div className="group text-center">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 sm:mb-4">
               <div className="absolute inset-0 bg-gold/10 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
-              <svg className="relative w-full h-full text-gold p-3 sm:p-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25a.75.75 0 01.75.75v2.25M12 2.25a.75.75 0 00-.75.75v2.25m-6 3.75h12m-12 0v6m0-6h12v6m-12 0h12" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l1.5 3 3-1.5 1.5 3 3-1.5 1.5 3 3-1.5 1.5 3 1.5-3M3 21h18" />
-              </svg>
+              <div className="relative w-full h-full flex items-center justify-center text-3xl sm:text-4xl">
+                <span aria-hidden="true">🇨🇦</span>
+              </div>
             </div>
             <h3 className="font-semibold text-primary text-sm sm:text-base">Built for Canada</h3>
             <p className="text-xs sm:text-sm text-gray-600 mt-1">Healthcare system expertise</p>

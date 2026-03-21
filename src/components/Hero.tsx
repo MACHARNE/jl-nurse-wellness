@@ -127,7 +127,17 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:block" />
+          <div className="mx-auto w-full max-w-[380px] lg:mx-0 lg:justify-self-end">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-xl border border-white/30 bg-black/20 shadow-2xl">
+              <iframe
+                src="https://www.instagram.com/reel/DQ8LtM_ETmt/embed/?autoplay=1&muted=1&playsinline=1"
+                title="Instagram reel"
+                className="h-full w-full"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

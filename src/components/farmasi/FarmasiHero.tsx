@@ -1,27 +1,14 @@
-// src/components/farmasi/FarmasiHero.tsx
+﻿// src/components/farmasi/FarmasiHero.tsx
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function FarmasiHero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/farmasi/farmasi-hero.jpg"
-          alt="Farmasi Products"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80"></div>
-      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80"></div>
 
-      {/* Animated Background Elements */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-gold/20 rounded-full blur-3xl animate-pulseSlow z-0"></div>
       <div className="absolute bottom-20 left-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl animate-pulseSlow z-0" style={{ animationDelay: '2s' }}></div>
 
