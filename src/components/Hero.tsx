@@ -48,7 +48,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 md:py-24">
-        <div className="grid w-full items-center gap-8 md:gap-12 lg:grid-cols-2">
+        <div className="grid w-full items-center gap-8 md:gap-12">
           <div className="text-center lg:text-left">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-white shadow-lg backdrop-blur-sm sm:mb-6 sm:px-4 sm:py-2 animate-bounceSlow">
               <span className="h-1.5 w-1.5 rounded-full bg-gold sm:h-2 sm:w-2 animate-pulse" />
@@ -124,18 +124,6 @@ export default function Hero() {
               >
                 Download Free Starter Guide
               </Link>
-            </div>
-          </div>
-
-          <div className="mx-auto w-full max-w-[380px] lg:mx-0 lg:justify-self-end">
-            <div className="relative aspect-[9/16] overflow-hidden rounded-xl border border-white/30 bg-black/20 shadow-2xl">
-              <iframe
-                src="https://www.instagram.com/reel/DQ8LtM_ETmt/embed/?autoplay=1&muted=1&playsinline=1"
-                title="Instagram reel"
-                className="h-full w-full"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowFullScreen
-              />
             </div>
           </div>
         </div>

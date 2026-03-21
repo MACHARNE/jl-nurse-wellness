@@ -49,7 +49,7 @@ const products = [
     buttonText: 'Shop Care',
     buttonLink: '/farmasi/essentials',
     bgColor: 'bg-green-50',
-    image: '/images/essentials1.png',
+    image: '/images/dailyessentials1.png',
   },
   {
     id: 4,
