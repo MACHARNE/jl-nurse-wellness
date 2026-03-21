@@ -21,6 +21,7 @@ const products = [
     buttonText: 'Shop Skincare',
     buttonLink: '/farmasi/skincare',
     bgColor: 'bg-amber-50',
+    image: '/images/prenumskincare1.png',
   },
   {
     id: 2,
@@ -35,6 +36,7 @@ const products = [
     buttonText: 'Shop Makeup',
     buttonLink: '/farmasi/makeup',
     bgColor: 'bg-rose-50',
+    image: '/images/makeup1.png',
   },
   {
     id: 3,
