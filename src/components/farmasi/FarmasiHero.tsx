@@ -15,7 +15,7 @@ export default function FarmasiHero() {
           loop
           playsInline
           preload="metadata"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain object-center bg-black"
         />
       </div>
 
