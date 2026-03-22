@@ -60,8 +60,7 @@ export default function KokosheaHero() {
             className="mx-auto mb-8 max-w-2xl text-lg text-white/90 sm:text-xl md:text-2xl"
             style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.35)' }}
           >
-            Kokoshea brings together nature-inspired beauty and nourishing care,
-            with the hero message sitting above a rich product-led background.
+            Kokoshea brings together nature-inspired beauty and nourishing care!
           </motion.p>
 
           <motion.div
