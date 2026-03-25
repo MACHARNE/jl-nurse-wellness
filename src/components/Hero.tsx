@@ -61,12 +61,14 @@ export default function Hero() {
             </div>
 
             <h1 className="mb-4 text-3xl font-bold leading-tight text-white sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
-              From Nurse to{" "}
-              <span className="relative inline-block text-gold">
-                Agency Owner
-                <span className="absolute -bottom-2 left-0 h-1 w-full rounded-full bg-gold/50 shadow-lg" />
-              </span>{" "}
-              in Canada
+              From Nurse to
+              <span className="block">
+                <span className="relative inline-block text-gold">
+                  Agency Owner
+                  <span className="absolute -bottom-2 left-0 h-1 w-full rounded-full bg-gold/50 shadow-lg" />
+                </span>{" "}
+                in Canada
+              </span>
             </h1>
 
             <style jsx>{`
