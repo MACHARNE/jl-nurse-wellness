@@ -14,7 +14,7 @@ export default function FarmasiCTA() {
           viewport={{ once: true }}
         >
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-            CTA to storefront or sign-up
+            Choose your next step with Farmasi
           </h2>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
