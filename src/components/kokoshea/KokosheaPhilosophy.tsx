@@ -46,7 +46,7 @@ export default function KokosheaPhilosophy() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-6 inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold"
             >
-              Our Philosophy
+              Brand Story
             </motion.span>
 
             <motion.h2

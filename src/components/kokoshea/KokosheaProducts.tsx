@@ -106,9 +106,30 @@ export default function KokosheaProducts() {
   const [serumIndex, setSerumIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
+  const [cardsPerView, setCardsPerView] = useState(3);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const cardsPerView = 3;
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth >= 1024) {
+        setCardsPerView(3);
+        return;
+      }
+
+      if (window.innerWidth >= 768) {
+        setCardsPerView(2);
+        return;
+      }
+
+      setCardsPerView(1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -164,23 +185,24 @@ export default function KokosheaProducts() {
     ? products 
     : products.filter(p => p.category === activeCategory);
   const totalSlides = Math.max(1, filteredProducts.length - cardsPerView + 1);
+  const activeSlide = Math.min(currentSlide, totalSlides - 1);
 
   useEffect(() => {
     if (totalSlides <= 1 || isCarouselHovered) return;
 
     const interval = window.setInterval(() => {
-      setCurrentSlide((current) => (current + 1) % totalSlides);
+      setCurrentSlide((current) => (Math.min(current, totalSlides - 1) + 1) % totalSlides);
     }, 3200);
 
     return () => window.clearInterval(interval);
   }, [isCarouselHovered, totalSlides]);
 
   const goToPreviousSlide = () => {
-    setCurrentSlide((current) => (current - 1 + totalSlides) % totalSlides);
+    setCurrentSlide((current) => (Math.min(current, totalSlides - 1) - 1 + totalSlides) % totalSlides);
   };
 
   const goToNextSlide = () => {
-    setCurrentSlide((current) => (current + 1) % totalSlides);
+    setCurrentSlide((current) => (Math.min(current, totalSlides - 1) + 1) % totalSlides);
   };
 
   return (
@@ -193,7 +215,7 @@ export default function KokosheaProducts() {
           className="text-center mb-12"
         >
           <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/10 px-4 py-2 rounded-full mb-4">
-            Our Products
+            Featured Collections
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
             Natural Care for Every Routine
@@ -257,7 +279,7 @@ export default function KokosheaProducts() {
           </button>
 
           <motion.div
-            animate={{ x: `-${currentSlide * (100 / cardsPerView)}%` }}
+            animate={{ x: `-${activeSlide * (100 / cardsPerView)}%` }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
             className="flex"
           >
@@ -422,7 +444,7 @@ export default function KokosheaProducts() {
             <div
               key={i}
               className={`w-2 h-2 rounded-full transition-colors ${
-                i === currentSlide ? 'bg-gold' : 'bg-gray-300'
+                i === activeSlide ? 'bg-gold' : 'bg-gray-300'
               }`}
             />
           ))}

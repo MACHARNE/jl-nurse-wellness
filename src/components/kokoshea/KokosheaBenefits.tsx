@@ -45,7 +45,7 @@ export default function KokosheaBenefits() {
           className="mx-auto max-w-3xl text-center"
         >
           <span className="inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
-            Why Kokoshea
+            Product Benefits
           </span>
           <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl">
             Beautifully positioned for wellness-focused professionals

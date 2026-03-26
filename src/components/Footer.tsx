@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-4">
           <div className="text-center sm:text-left">
-            <h3 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">JL Nurse & Wellness</h3>
+            <h3 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">JL Nurse 360</h3>
             <p className="text-xs text-gray-300 sm:text-sm">
               Helping Canadian nurses transition from bedside to business ownership.
             </p>
@@ -88,7 +88,7 @@ export default function Footer() {
           <div className={`overflow-hidden transition-all duration-300 ${showDisclaimer ? 'mt-4 max-h-96' : 'max-h-0'}`}>
             <div className="space-y-2 rounded-lg bg-gray-900/50 p-4 text-xs text-gray-400">
               <p>This website provides general information and does not constitute legal, financial, or professional advice. Results may vary and individual outcomes depend on various factors.</p>
-              <p>JL Nurse & Wellness is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
+              <p>JL Nurse 360 is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
               <p>By using this site, you agree to our Terms of Service and Privacy Policy. All testimonials are from real clients but individual results may vary.</p>
             </div>
           </div>
@@ -97,13 +97,13 @@ export default function Footer() {
         <div className="mt-6 hidden border-t border-gray-800 pt-4 sm:mt-8 sm:pt-6 md:mt-12 md:block md:pt-8">
           <div className="grid grid-cols-1 gap-4 text-xs text-gray-400 md:grid-cols-3">
             <p>This website provides general information and does not constitute legal, financial, or professional advice. Results may vary and individual outcomes depend on various factors.</p>
-            <p>JL Nurse & Wellness is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
+            <p>JL Nurse 360 is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
             <p>By using this site, you agree to our Terms of Service and Privacy Policy. All testimonials are from real clients but individual results may vary.</p>
           </div>
         </div>
 
         <div className="mt-6 border-t border-gray-800 pt-4 text-center text-xs text-gray-400 sm:mt-8 sm:pt-6 sm:text-sm md:mt-12 md:pt-8">
-          <p>Copyright {currentYear} JL Nurse & Wellness. All rights reserved. Empowering Canadian nurses.</p>
+          <p>Copyright {currentYear} JL Nurse 360. All rights reserved. Empowering Canadian nurses.</p>
         </div>
       </div>
     </footer>

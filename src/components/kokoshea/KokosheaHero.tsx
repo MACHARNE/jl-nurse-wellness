@@ -33,53 +33,44 @@ export default function KokosheaHero() {
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-6 inline-block rounded-full border border-gold/30 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold backdrop-blur-sm"
-          >
-            Natural Skincare
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.35)' }}
           >
-            Pure Care, Beautiful Glow,{' '}
-            <span className="text-gold">Naturally Kokoshea</span>
+            Natural Skincare for{' '}
+            <span className="text-gold">Nourished, Radiant Living</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mx-auto mb-8 max-w-2xl text-lg text-white/90 sm:text-xl md:text-2xl"
-            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.35)' }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mx-auto mb-8 max-w-2xl rounded-2xl border border-white/15 bg-black/30 px-5 py-4 text-lg text-white sm:text-xl md:text-2xl backdrop-blur-sm"
+            style={{ textShadow: '0 4px 16px rgba(0, 0, 0, 0.75)' }}
           >
-            Kokoshea brings together nature-inspired beauty and nourishing care!
+            Shop skincare rooted in hydration, self-care, and confidence.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col justify-center gap-4 sm:flex-row"
           >
             <Link
-              href="/kokoshea#products"
+              href="/kokoshea#kokoshea-products"
               className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary shadow-2xl transition hover:scale-105 hover:bg-gold-dark"
             >
               Discover Kokoshea
             </Link>
             <Link
-              href="/kokoshea#partner"
+              href="/kokoshea#kokoshea-shop"
               className="rounded-btn border-2 border-white bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:text-primary-dark"
             >
-              Become a Partner
+              Shop Kokoshea Now
             </Link>
           </motion.div>
         </motion.div>
