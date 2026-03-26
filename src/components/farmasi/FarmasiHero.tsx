@@ -35,7 +35,7 @@ export default function FarmasiHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-gold/30"
           >
-            For Canadian Nurses
+            Farmasi with JL Nurse 360
           </motion.span>
 
           <motion.h1
@@ -45,8 +45,7 @@ export default function FarmasiHero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             style={{ textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}
           >
-            Premium Skincare,{' '}
-            <span className="text-gold">Flexible Income</span>
+            Beauty, Wellness, and <span className="text-gold">Flexible Income</span>
           </motion.h1>
 
           <motion.p
@@ -56,8 +55,8 @@ export default function FarmasiHero() {
             className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
           >
-            Perfect schedule fit. Join Farmasi and build a wellness business 
-            alongside your nursing career.
+            Discover Farmasi products and explore a business opportunity designed
+            for busy professionals.
           </motion.p>
 
           <motion.div

@@ -37,15 +37,6 @@ export default function AboutHero() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/20 px-4 py-2 rounded-full mb-6"
-          >
-            About Jean Lewis
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

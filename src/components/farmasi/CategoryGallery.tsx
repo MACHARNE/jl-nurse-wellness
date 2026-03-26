@@ -77,6 +77,7 @@ export default function CategoryGallery() {
 
   return (
     <section
+      id="store"
       ref={sectionRef}
       className="relative overflow-hidden bg-background py-16 md:py-24"
     >

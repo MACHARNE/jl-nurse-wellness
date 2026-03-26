@@ -28,11 +28,8 @@ export default function WhyFarmasi() {
           viewport={{ once: true }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
+          <h2 className="text-4xl font-bold text-primary sm:text-5xl md:text-6xl">
             Why Farmasi
-          </span>
-          <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            A polished wellness business model for nurses who want options
           </h2>
         </motion.div>
 

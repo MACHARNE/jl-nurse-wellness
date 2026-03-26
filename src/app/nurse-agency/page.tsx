@@ -2,10 +2,10 @@
 import { Metadata } from 'next';
 import AgencyHero from '@/components/nurse-agency/AgencyHero';
 import WhoItsFor from '@/components/nurse-agency/WhoItsFor';
+import WhyNursesEntrepreneurs from '@/components/nurse-agency/WhyNursesEntrepreneurs';
 import ProgramBenefits from '@/components/nurse-agency/ProgramBenefits';
-import ProgramModules from '@/components/nurse-agency/ProgramModules';
-import PricingTable from '@/components/nurse-agency/PricingTable';
-import AgencyCTA from '@/components/nurse-agency/AgencyCTA';
+import ProgramIncludes from '@/components/nurse-agency/ProgramIncludes';
+import ProgramFAQ from '@/components/nurse-agency/ProgramFAQ';
 
 export const metadata: Metadata = {
   title: 'Nurse to Agency Program - Build Your Healthcare Business',
@@ -17,10 +17,10 @@ export default function NurseAgencyPage() {
     <>
       <AgencyHero />
       <WhoItsFor />
+      <WhyNursesEntrepreneurs />
+      <ProgramIncludes />
       <ProgramBenefits />
-      <ProgramModules />
-      <PricingTable />
-      <AgencyCTA />
+      <ProgramFAQ />
     </>
   );
 }

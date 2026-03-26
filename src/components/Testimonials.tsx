@@ -28,29 +28,29 @@ export default function Testimonials() {
       role: 'Registered Practical Nurse (RPN)',
       location: 'Toronto, ON',
       quote:
-        "I moved from RPN to agency owner in just 4 months. The step-by-step guidance made all the difference. I'm now earning 3x my hospital salary while working fewer hours.",
+        "Nurse2Agency gave me a clear roadmap from bedside to business ownership. In four months, I launched my agency and now lead my schedule with more confidence and income.",
       rating: 5,
-      achievement: 'Launched Healthcare Agency',
+      achievement: 'Nurse Entrepreneurship Success',
     },
     {
       id: 2,
-      name: 'Michael T.',
-      role: 'Registered Nurse (RN)',
-      location: 'Vancouver, BC',
+      name: 'Amanda P.',
+      role: 'Farmasi Customer',
+      location: 'Mississauga, ON',
       quote:
-        'Finally a program that understands nurses. I was skeptical at first, but the dual income model changed everything. I now have my agency and wellness business running side by side.',
+        'Farmasi products have become part of my daily routine. The quality is excellent, and I love that I can also share products with friends and earn flexible extra income.',
       rating: 5,
-      achievement: '$10k+ Monthly Revenue',
+      achievement: 'Farmasi Customer Favorite',
     },
     {
       id: 3,
-      name: 'Jennifer L.',
-      role: 'Registered Nurse (RN)',
-      location: 'Calgary, AB',
+      name: 'Grace N.',
+      role: 'Kokoshea Customer',
+      location: 'Winnipeg, MB',
       quote:
-        'The dual income model changed everything. Agency + wellness = true freedom. I never thought I could leave bedside, but now I work on my own terms.',
+        'Kokoshea transformed my skincare routine. My skin feels healthier, softer, and more radiant, and I appreciate using natural shea-based products I can trust.',
       rating: 5,
-      achievement: 'Full-Time Entrepreneur',
+      achievement: 'Kokoshea Skincare Testimonial',
     },
     {
       id: 4,
@@ -124,13 +124,6 @@ export default function Testimonials() {
       </svg>
     ));
 
-  const stats = [
-    { value: '500+', label: 'Nurses Empowered' },
-    { value: '94%', label: 'Success Rate' },
-    { value: '$2.5M+', label: 'Combined Income' },
-    { value: '50+', label: 'Agencies Launched' },
-  ];
-
   const slideVariants = {
     enter: (dir: number) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
     center: { x: 0, opacity: 1 },
@@ -152,29 +145,9 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="mb-4 inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
-            Real Results
-          </span>
           <h2 className="mb-4 text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            What Nurses Are <span className="text-gold">Saying</span>
+            Testimonials
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Join hundreds of Canadian nurses who have transformed their careers
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-12 grid max-w-3xl grid-cols-2 gap-4 md:grid-cols-4"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-xl font-bold text-primary sm:text-2xl">{stat.value}</div>
-              <p className="text-xs text-gray-500">{stat.label}</p>
-            </div>
-          ))}
         </motion.div>
 
         <div

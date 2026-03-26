@@ -1,8 +1,7 @@
 // src/app/about/page.tsx
 import { Metadata } from 'next';
 import AboutHero from '@/components/about/AboutHero';
-import AboutStory from '@/components/about/AboutStory';
-import AboutMissionVision from '@/components/about/AboutMissionVision';
+import AboutFullProfile from '@/components/about/AboutFullProfile';
 import AboutCTA from '@/components/about/AboutCTA';
 
 export const metadata: Metadata = {
@@ -14,8 +13,7 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <AboutStory />
-      <AboutMissionVision />
+      <AboutFullProfile />
       <AboutCTA />
     </>
   );

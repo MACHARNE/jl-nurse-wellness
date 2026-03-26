@@ -3,6 +3,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 
 type BenefitIcon = 'structure' | 'growth' | 'operations' | 'finance';
@@ -93,11 +94,8 @@ export default function ProgramBenefits() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/10 px-4 py-2 rounded-full mb-4">
-            Program Benefits
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-            What You'll Gain
+            Benefits
           </h2>
         </motion.div>
 
@@ -175,6 +173,20 @@ export default function ProgramBenefits() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-12 flex justify-center"
+        >
+          <Link
+            href="/contact#strategy-call"
+            className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary transition hover:scale-105 hover:bg-gold-dark"
+          >
+            Apply for Nurse2Agency
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

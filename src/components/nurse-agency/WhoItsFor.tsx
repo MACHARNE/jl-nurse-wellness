@@ -3,6 +3,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 
 type AudienceIcon = 'rn' | 'rpn' | 'entrepreneur' | 'career';
@@ -94,11 +95,8 @@ export default function WhoItsFor() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/10 px-4 py-2 rounded-full mb-4">
-            Who It's For
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-            Designed Specifically For
+            Who it is for
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our program is tailored for healthcare professionals ready to take the next step
@@ -180,6 +178,20 @@ export default function WhoItsFor() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-10 flex justify-center"
+        >
+          <Link
+            href="/contact#strategy-call"
+            className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary transition hover:scale-105 hover:bg-gold-dark"
+          >
+            Apply for Nurse2Agency
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

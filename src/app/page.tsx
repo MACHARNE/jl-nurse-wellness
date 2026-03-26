@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import PainPoint from "@/components/PainPoint";
-import Solution from "@/components/Solution";
 import AboutJean from "@/components/AboutJean";
 import ProgramOffer from "@/components/ProgramOffer";
 import DualIncome from "@/components/DualIncome";
@@ -14,9 +13,8 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
-      <PainPoint />
-      <Solution />
       <AboutJean />
+      <PainPoint />
       <ProgramOffer />
       <DualIncome />
       <Testimonials />

@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -33,7 +32,7 @@ export default function AgencyHero() {
             initial={{ scale: 1.2, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 1.1, opacity: 0 }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
+            transition={{ duration: 2.5, ease: 'easeInOut' }}
             className="absolute inset-0"
           >
             <Image
@@ -45,7 +44,7 @@ export default function AgencyHero() {
             />
           </motion.div>
         </AnimatePresence>
-        
+
         {/* Multiple overlay layers for depth */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
@@ -53,7 +52,7 @@ export default function AgencyHero() {
 
       {/* Floating particles/elements */}
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, -20, 0],
           rotate: [0, 5, 0],
         }}
@@ -64,7 +63,7 @@ export default function AgencyHero() {
       </motion.div>
 
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, 20, 0],
           rotate: [0, -5, 0],
         }}
@@ -81,18 +80,6 @@ export default function AgencyHero() {
           transition={{ duration: 1 }}
           className="text-center max-w-4xl mx-auto"
         >
-          {/* Animated badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block mb-6"
-          >
-            <span className="bg-white/10 backdrop-blur-sm text-gold border border-gold/30 px-4 py-2 rounded-full text-sm font-semibold">
-              🇨🇦 For Canadian Nurses
-            </span>
-          </motion.div>
-
           {/* Main heading with staggered letters */}
           <motion.h1
             initial="hidden"
@@ -101,24 +88,25 @@ export default function AgencyHero() {
               hidden: { opacity: 0 },
               visible: {
                 opacity: 1,
-                transition: { staggerChildren: 0.03, delayChildren: 0.3 }
-              }
+                transition: { staggerChildren: 0.03, delayChildren: 0.3 },
+              },
             }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            {"From Nurse to Healthcare Entrepreneur".split("").map((char, index) => (
+            {'From Nurse to '.split('').map((char, index) => (
               <motion.span
                 key={index}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
+                  visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.5 }}
-                className={char === " " ? "mr-2" : ""}
+                className={char === ' ' ? 'mr-2' : ''}
               >
                 {char}
               </motion.span>
             ))}
+            <span className="text-gold">Agency Owner</span>
           </motion.h1>
 
           {/* Animated underline */}
@@ -136,38 +124,9 @@ export default function AgencyHero() {
             className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
           >
-            Learn how Canadian nurses can transition from traditional employment to owning
-            their own healthcare service business.
+            A practical path for nurses who want to explore agency ownership and healthcare
+            entrepreneurship.
           </motion.p>
-
-          {/* CTA Buttons with hover effects */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link
-              href="#pricing"
-              className="group relative overflow-hidden bg-gold text-primary px-8 py-4 rounded-btn font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-            >
-              <span className="relative z-10">Get Started Today</span>
-              <motion.div
-                className="absolute inset-0 bg-white"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-                style={{ opacity: 0.2 }}
-              />
-            </Link>
-            
-            <Link
-              href="#learn-more"
-              className="group border-2 border-white/50 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-btn font-bold text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
-            >
-              Learn More
-            </Link>
-          </motion.div>
 
           {/* Floating scroll indicator */}
           <motion.div

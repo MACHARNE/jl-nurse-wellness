@@ -9,19 +9,21 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'JL Nurse & Wellness - From Nurse to Agency Owner in Canada',
-    template: '%s | JL Nurse & Wellness'
+    default: 'JLNurse360 | Nursing. Wellness. Entrepreneurship.',
+    template: '%s | JLNurse360'
   },
   icons: {
     icon: '/images/fev.png',
     shortcut: '/images/fev.png',
     apple: '/images/fev.png',
   },
-  description: 'Helping RPNs & RNs build profitable nursing agencies and create income beyond bedside work. Free strategy calls and starter guides.',
-  keywords: 'nurse agency, nursing business, RPN entrepreneur, RN business, Canadian nurses, healthcare entrepreneurship',
+  description:
+    'Empowering nurses to build income, wellness, and business ownership. Helping nurses build income beyond the bedside.',
+  keywords:
+    'nurse entrepreneurship, nursing wellness, nurse business ownership, income beyond bedside, nurse entrepreneur Canada, nurse business platform, caregiver to business builder',
   authors: [{ name: 'Jean Lewis RN' }],
   creator: 'Jean Lewis RN',
-  publisher: 'JL Nurse & Wellness',
+  publisher: 'JLNurse360',
   formatDetection: {
     email: false,
     address: false,
@@ -32,16 +34,17 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'JL Nurse & Wellness',
-    description: 'Helping Canadian nurses build profitable agencies and create income beyond bedside work',
+    title: 'JLNurse360 | The Complete Nurse Lifestyle & Business Platform',
+    description:
+      'Empowering nurses to build income, wellness, and business ownership. From caregiver to business builder.',
     url: 'https://jlnursewellness.com',
-    siteName: 'JL Nurse & Wellness',
+    siteName: 'JLNurse360',
     images: [
       {
-        url: '/images/JLLOGO.jpg',
-        width: 800,
-        height: 600,
-        alt: 'JL Nurse & Wellness Logo',
+        url: 'https://jlnursewellness.com/images/JLLOGO.jpg',
+        width: 1200,
+        height: 1200,
+        alt: 'JLNurse360 Logo',
       },
     ],
     locale: 'en_CA',
@@ -49,9 +52,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'JL Nurse & Wellness',
-    description: 'Helping Canadian nurses build profitable agencies',
-    images: ['/images/JLLOGO.jpg'],
+    title: 'JLNurse360 | Nursing. Wellness. Entrepreneurship.',
+    description:
+      'Empowering nurses to build income, wellness, and business ownership.',
+    images: ['https://jlnursewellness.com/images/JLLOGO.jpg'],
   },
   robots: {
     index: true,

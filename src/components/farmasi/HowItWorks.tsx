@@ -31,11 +31,8 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-primary">
-            How It Works
-          </span>
           <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl">
-            A simple flow built for busy professionals
+            How to get started
           </h2>
         </motion.div>
 
