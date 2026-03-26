@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -42,6 +42,7 @@ export default function Navbar() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isSearchIndexReady = searchIndex.length > 0;
+  const previousPathnameRef = useRef(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,10 +52,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
-    setIsOpen(false);
-    setShowSearchResults(false);
+    if (previousPathnameRef.current === pathname) {
+      return;
+    }
+
+    previousPathnameRef.current = pathname;
+    const frameId = window.requestAnimationFrame(() => {
+      setIsOpen(false);
+      setShowSearchResults(false);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
 
   useEffect(() => {
@@ -143,14 +152,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const trimmed = searchQuery.trim();
-    if (!trimmed) {
-      setSearchResults([]);
-      setShowSearchResults(false);
-      return;
-    }
-
     const timeoutId = window.setTimeout(() => {
-      runSearch(searchQuery);
+      runSearch(trimmed ? searchQuery : '');
     }, 120);
 
     return () => window.clearTimeout(timeoutId);

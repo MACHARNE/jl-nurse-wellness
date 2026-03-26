@@ -48,7 +48,7 @@ export default function AboutJourney() {
             The Journey
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-primary">
-            Jean's Path to{' '}
+            Jean&apos;s Path to{' '}
             <span className="text-gold">Empowerment</span>
           </h2>
         </motion.div>

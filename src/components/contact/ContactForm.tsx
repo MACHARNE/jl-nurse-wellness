@@ -1,7 +1,6 @@
-// src/components/contact/ContactForm.tsx
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 export default function ContactForm() {
@@ -14,70 +13,72 @@ export default function ContactForm() {
     message: '',
     interest: 'nurse-agency',
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     setIsSubmitting(false);
     setSubmitStatus('success');
-    // Reset after 3 seconds
     setTimeout(() => setSubmitStatus('idle'), 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const inputClasses = "w-full px-4 py-3 border border-gray-200 rounded-btn focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all duration-300 bg-white";
+  const inputClasses =
+    'w-full rounded-btn border border-gray-200 bg-white px-4 py-3 transition-all duration-300 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50';
 
   return (
-    <section ref={ref} className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Column - Info */}
+    <section ref={ref} className="bg-background py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/10 px-4 py-2 rounded-full mb-4">
+            <span className="mb-4 inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
               Send a Message
             </span>
-            
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6">
-              We'd Love to Hear From You
+
+            <h2 className="mb-6 text-3xl font-bold text-primary sm:text-4xl">
+              We&apos;d Love to Hear From You
             </h2>
-            
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-              Whether you have questions about our programs, want to book a strategy call,
-              or just want to learn more about how we can help you build your nursing agency,
-              we're here to help.
+
+            <p className="mb-8 text-lg leading-relaxed text-gray-600">
+              Whether you have questions about our programs, want to book a strategy call, or
+              just want to learn more about how we can help you build your nursing agency,
+              we&apos;re here to help.
             </p>
 
             <div className="space-y-4">
               {[
-                { icon: '📞', title: 'Phone', value: '+1 (555) 123-4567' },
-                { icon: '✉️', title: 'Email', value: 'hello@jlnursewellness.com' },
-                { icon: '⏰', title: 'Response Time', value: 'Within 24 hours' },
+                { icon: 'Phone', title: 'Phone', value: '+1 (555) 123-4567' },
+                { icon: 'Email', title: 'Email', value: 'hello@jlnursewellness.com' },
+                { icon: 'Time', title: 'Response Time', value: 'Within 24 hours' },
               ].map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-sm font-semibold uppercase tracking-wide text-gold">
+                    {item.icon}
+                  </span>
                   <div>
                     <p className="text-sm text-gray-500">{item.title}</p>
                     <p className="font-semibold text-primary">{item.value}</p>
@@ -87,12 +88,11 @@ export default function ContactForm() {
             </div>
           </motion.div>
 
-          {/* Right Column - Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl shadow-xl p-6 sm:p-8"
+            className="rounded-3xl bg-white p-6 shadow-xl sm:p-8"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <motion.div
@@ -100,9 +100,7 @@ export default function ContactForm() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
-                </label>
+                <label className="mb-2 block text-sm font-medium text-gray-700">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -119,7 +117,7 @@ export default function ContactForm() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Email Address
                 </label>
                 <input
@@ -138,7 +136,7 @@ export default function ContactForm() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Phone Number
                 </label>
                 <input
@@ -156,8 +154,8 @@ export default function ContactForm() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  I'm interested in
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  I&apos;m interested in
                 </label>
                 <select
                   name="interest"
@@ -177,9 +175,7 @@ export default function ContactForm() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
+                <label className="mb-2 block text-sm font-medium text-gray-700">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -199,20 +195,30 @@ export default function ContactForm() {
                 transition={{ duration: 0.5, delay: 0.9 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-gold text-white px-6 py-4 rounded-btn font-semibold text-lg hover:bg-gold-dark transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full rounded-btn bg-gold px-6 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
                     </svg>
                     Sending...
                   </span>
                 ) : submitStatus === 'success' ? (
-                  <span className="flex items-center justify-center gap-2">
-                    ✓ Message Sent!
-                  </span>
+                  <span className="flex items-center justify-center gap-2">Message Sent!</span>
                 ) : (
                   'Send Message'
                 )}

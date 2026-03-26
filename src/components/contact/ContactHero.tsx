@@ -47,7 +47,7 @@ export default function ContactHero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
         >
-          Let's{' '}
+          Let&apos;s{' '}
           <span className="text-gold relative inline-block">
             Connect
             <motion.span
@@ -66,7 +66,7 @@ export default function ContactHero() {
           className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto"
         >
           Have questions about our programs? Ready to start your journey? 
-          We're here to help you every step of the way.
+          We&apos;re here to help you every step of the way.
         </motion.p>
       </div>
     </section>

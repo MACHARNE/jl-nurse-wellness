@@ -38,7 +38,7 @@ export const smoothScroll = (elementId: string, offset: number = 0): void => {
 };
 
 // Debounce function (with proper typing)
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: never[]) => void>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {

@@ -166,10 +166,6 @@ export default function KokosheaProducts() {
   const totalSlides = Math.max(1, filteredProducts.length - cardsPerView + 1);
 
   useEffect(() => {
-    setCurrentSlide(0);
-  }, [activeCategory]);
-
-  useEffect(() => {
     if (totalSlides <= 1 || isCarouselHovered) return;
 
     const interval = window.setInterval(() => {
@@ -211,10 +207,13 @@ export default function KokosheaProducts() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => {
+                setActiveCategory(category);
+                setCurrentSlide(0);
+              }}
               className={`px-4 py-2 rounded-btn text-sm font-medium transition-all duration-300 ${
                 activeCategory === category
                   ? 'bg-gold text-white'
