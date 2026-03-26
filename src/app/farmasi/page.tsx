@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 import FarmasiHero from '@/components/farmasi/FarmasiHero';
 import WhyFarmasi from '@/components/farmasi/WhyFarmasi';
-import CategoryGallery from '@/components/farmasi/CategoryGallery';
+import ProductShowcase from '@/components/farmasi/ProductShowcase';
 import WhyNursesLoveFarmasi from '@/components/farmasi/WhyNursesLoveFarmasi';
 import IncomeOpportunity from '@/components/farmasi/IncomeOpportunity';
 import HowItWorks from '@/components/farmasi/HowItWorks';
@@ -18,7 +18,7 @@ export default function FarmasiPage() {
     <>
       <FarmasiHero />
       <WhyFarmasi />
-      <CategoryGallery />
+      <ProductShowcase />
       <WhyNursesLoveFarmasi />
       <IncomeOpportunity />
       <HowItWorks />

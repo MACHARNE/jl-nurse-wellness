@@ -76,6 +76,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
 
   return (
     <motion.section
+      id={index === 0 ? 'store' : undefined}
       ref={sectionRef}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
