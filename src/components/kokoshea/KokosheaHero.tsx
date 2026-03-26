@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const heroImage = '/images/EKOKOSHA-ALL-PRODUCT-IN-VIEW.jpeg';
@@ -54,25 +53,6 @@ export default function KokosheaHero() {
             Shop skincare rooted in hydration, self-care, and confidence.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col justify-center gap-4 sm:flex-row"
-          >
-            <Link
-              href="/kokoshea#kokoshea-products"
-              className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary shadow-2xl transition hover:scale-105 hover:bg-gold-dark"
-            >
-              Discover Kokoshea
-            </Link>
-            <Link
-              href="/kokoshea#kokoshea-shop"
-              className="rounded-btn border-2 border-white bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:text-primary-dark"
-            >
-              Shop Kokoshea Now
-            </Link>
-          </motion.div>
         </motion.div>
       </div>
     </section>

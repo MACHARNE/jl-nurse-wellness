@@ -6,7 +6,7 @@ import NewsletterSignup from '@/components/resources/NewsletterSignup';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Resources for Nurses | Free Guides, Business Insights, and Next Steps',
+  title: 'Resources for Nurses',
   description:
     'Browse free resources for Canadian nurses, including entrepreneurship guides, side-income ideas, practical insights, and next steps for business growth.',
   path: '/resources',
