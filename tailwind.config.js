@@ -1,10 +1,8 @@
-﻿import type { Config } from "tailwindcss";
-
-const config: Config = {
+const config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -12,42 +10,37 @@ const config: Config = {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
-        // Your original colors
-        primary: '#0B1F3A',      // Dark navy blue
-        gold: '#C9A14A',          // Gold accent
-        background: '#F6F3EF',     // Off-white background
-        
-        // Extended variations
+        primary: '#0B1F3A',
+        gold: '#C9A14A',
+        background: '#F6F3EF',
         'primary-dark': '#08162B',
         'primary-light': '#1A2F4D',
         'gold-dark': '#B08A3A',
         'gold-light': '#D4B16B',
-        
-        // Additional colors from the new config
         secondary: '#10B981',
         accent: '#C4B5FD',
         'cta-blue': '#2563EB',
-        'dark': '#111827',
-        'gradient-start': '#0B1F3A',  // Updated to match primary
-        'gradient-end': '#C9A14A',     // Updated to match gold
+        dark: '#111827',
+        'gradient-start': '#0B1F3A',
+        'gradient-end': '#C9A14A',
       },
       backgroundColor: {
         DEFAULT: '#F6F3EF',
       },
       borderRadius: {
-        'btn': '8px',
+        btn: '8px',
       },
       animation: {
-        'fadeIn': 'fadeIn 0.8s ease-out',
-        'slideUp': 'slideUp 0.6s ease-out',
-        'slideInLeft': 'slideInLeft 0.8s ease-out',
-        'slideInRight': 'slideInRight 0.8s ease-out',
+        fadeIn: 'fadeIn 0.8s ease-out',
+        slideUp: 'slideUp 0.6s ease-out',
+        slideInLeft: 'slideInLeft 0.8s ease-out',
+        slideInRight: 'slideInRight 0.8s ease-out',
         'bounce-slow': 'bounce 3s infinite',
-        'bounceSlow': 'bounce 3s infinite',  // Added for compatibility
+        bounceSlow: 'bounce 3s infinite',
         'pulse-slow': 'pulse 4s infinite',
-        'pulseSlow': 'pulse 4s infinite',    // Added for compatibility
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 3s ease-in-out infinite',
+        pulseSlow: 'pulse 4s infinite',
+        float: 'float 6s ease-in-out infinite',
+        glow: 'glow 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -71,16 +64,16 @@ const config: Config = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(201, 161, 74, 0.3)' }, // Updated to gold
-          '50%': { boxShadow: '0 0 40px rgba(201, 161, 74, 0.6)' },      // Updated to gold
+          '0%, 100%': { boxShadow: '0 0 20px rgba(201, 161, 74, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(201, 161, 74, 0.6)' },
         },
       },
       screens: {
-        'xs': '475px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        xs: '475px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
       },
     },
