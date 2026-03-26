@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const heroImage = '/images/2b37b2b-2f1a-48e0-87a4-611b1923dba3.webp';
+const heroImage = '/images/EKOKOSHA-ALL-PRODUCT-IN-VIEW.jpeg';
 
 export default function KokosheaHero() {
   return (
