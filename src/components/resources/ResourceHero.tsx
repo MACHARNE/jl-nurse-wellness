@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function ResourceHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary to-primary-dark py-20 text-white md:py-28">
+    <section className="relative overflow-hidden py-20 text-primary md:py-28">
       <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
@@ -19,7 +19,7 @@ export default function ResourceHero() {
             Professional guidance for nurses{' '}
             <span className="text-gold">building income beyond the bedside</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-300">
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-charcoal/80">
             Explore guides, insights, and practical tools designed to help Canadian
             nurses move from curiosity to confident action.
           </p>

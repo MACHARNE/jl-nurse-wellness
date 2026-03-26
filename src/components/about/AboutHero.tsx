@@ -10,7 +10,7 @@ export default function AboutHero() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary to-primary-dark">
+    <section ref={ref} className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <motion.div
         animate={{ 
@@ -41,7 +41,7 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-6"
           >
             Meet{' '}
             <span className="text-gold relative inline-block">
@@ -59,7 +59,7 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto"
+            className="text-xl sm:text-2xl text-charcoal/80 max-w-3xl mx-auto"
           >
             Registered Nurse & Founder of Nurse2Agency
           </motion.p>

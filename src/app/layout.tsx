@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import { Suspense } from 'react';
 import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
@@ -7,7 +7,16 @@ import Footer from '@/components/Footer';
 import StickyCTA from '@/components/StickyCTA';  // Import the Sticky CTA component
 import { buildMetadata, siteConfig } from '@/lib/seo';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-body',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  weight: ['600', '700'],
+});
 
 const websiteJsonLd = {
   '@context': 'https://schema.org',
@@ -81,7 +90,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

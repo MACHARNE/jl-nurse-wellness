@@ -10,7 +10,7 @@ export default function ContactHero() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="relative py-20 md:py-28 bg-gradient-to-br from-primary to-primary-dark text-white overflow-hidden">
+    <section ref={ref} className="relative overflow-hidden py-20 text-primary md:py-28">
       {/* Animated background elements */}
       <motion.div
         animate={{ 
@@ -36,7 +36,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/20 px-4 py-2 rounded-full mb-6"
+          className="mb-6 inline-block rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold"
         >
           Get in Touch
         </motion.span>
@@ -63,7 +63,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto"
+          className="mx-auto max-w-2xl text-lg text-charcoal/80 sm:text-xl"
         >
           Have questions about our programs? Ready to start your journey? 
           We&apos;re here to help you every step of the way.

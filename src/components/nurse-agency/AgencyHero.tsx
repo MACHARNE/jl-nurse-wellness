@@ -46,8 +46,8 @@ export default function AgencyHero() {
         </AnimatePresence>
 
         {/* Multiple overlay layers for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f3ef]/76 via-[#ffffff]/46 to-[#f6f3ef]/76"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2b2b2b]/28 via-transparent to-[#c9a14a]/12"></div>
       </div>
 
       {/* Floating particles/elements */}
@@ -91,7 +91,7 @@ export default function AgencyHero() {
                 transition: { staggerChildren: 0.03, delayChildren: 0.3 },
               },
             }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
           >
             {'From Nurse to '.split('').map((char, index) => (
               <motion.span
@@ -121,8 +121,7 @@ export default function AgencyHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
-            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+            className="mb-8 mx-auto max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-lg text-charcoal shadow-xl backdrop-blur-sm sm:text-xl md:text-2xl"
           >
             A practical path for nurses who want to explore agency ownership and healthcare
             entrepreneurship.
@@ -134,7 +133,7 @@ export default function AgencyHero() {
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="flex h-10 w-6 justify-center rounded-full border-2 border-primary/30">
               <motion.div
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

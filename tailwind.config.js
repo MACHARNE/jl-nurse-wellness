@@ -7,12 +7,16 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['var(--font-body)', 'Inter', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Playfair Display', 'serif'],
       },
       colors: {
         primary: '#0B1F3A',
         gold: '#C9A14A',
         background: '#F6F3EF',
+        cream: '#F6F3EF',
+        'soft-white': '#FFFFFF',
+        charcoal: '#2B2B2B',
         'primary-dark': '#08162B',
         'primary-light': '#1A2F4D',
         'gold-dark': '#B08A3A',

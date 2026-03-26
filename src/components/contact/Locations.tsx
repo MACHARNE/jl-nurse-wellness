@@ -1,41 +1,36 @@
-// src/components/contact/Locations.tsx
 'use client';
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const locations = [
+const contactPoints = [
   {
-    city: 'Toronto',
-    province: 'Ontario',
-    address: '123 Queen Street West, Suite 400',
-    phone: '+1 (416) 555-0123',
-    email: 'toronto@jlnursewellness.com',
-    icon: '🇨🇦',
+    label: 'Direct Support',
+    subtitle: 'Connect with Jean Lewis',
+    detail: '+1 (647) 774-8336',
+    meta: 'Phone support and scheduled conversations',
+    icon: 'PH',
   },
   {
-    city: 'Vancouver',
-    province: 'British Columbia',
-    address: '789 Granville Street, Suite 200',
-    phone: '+1 (604) 555-0456',
-    email: 'vancouver@jlnursewellness.com',
-    icon: '🏔️',
+    label: 'Email Access',
+    subtitle: 'General inquiries',
+    detail: 'info@JLNurse360.com',
+    meta: 'Best for questions, collaborations, and follow-up',
+    icon: 'EM',
   },
   {
-    city: 'Calgary',
-    province: 'Alberta',
-    address: '456 8th Avenue SW, Suite 300',
-    phone: '+1 (403) 555-0789',
-    email: 'calgary@jlnursewellness.com',
-    icon: '🏙️',
+    label: 'Nationwide Reach',
+    subtitle: 'Serving nurses across Canada',
+    detail: 'Virtual consultations available',
+    meta: 'Guidance, resources, and support from anywhere',
+    icon: 'CA',
   },
   {
-    city: 'Montreal',
-    province: 'Quebec',
-    address: '1010 Rue Sherbrooke Ouest',
-    phone: '+1 (514) 555-1011',
-    email: 'montreal@jlnursewellness.com',
-    icon: '⚜️',
+    label: 'Website',
+    subtitle: 'Explore more online',
+    detail: 'www.JLNurse360.com',
+    meta: 'Programs, wellness, blog articles, and free resources',
+    icon: 'WEB',
   },
 ];
 
@@ -44,78 +39,58 @@ export default function Locations() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section ref={ref} className="bg-background py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-gold/10 px-4 py-2 rounded-full mb-4">
-            Our Locations
+          <span className="mb-4 inline-block rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
+            Contact Details
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-            Serving Nurses Across Canada
+          <h2 className="mb-4 text-3xl font-bold text-primary sm:text-4xl">
+            Reach JL Nurse 360 with confidence
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Virtual consultations available nationwide. In-person meetings by appointment.
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">
+            Whether you are exploring nurse entrepreneurship, wellness support, or
+            business guidance, the right contact path is here.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {locations.map((location, index) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {contactPoints.map((item, index) => (
             <motion.div
-              key={location.city}
+              key={item.label}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: 0.2 + index * 0.1,
-                type: "spring",
-                stiffness: 100 
+                type: 'spring',
+                stiffness: 100,
               }}
-              whileHover={{ 
-                y: -5,
-                transition: { duration: 0.2 }
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.2 },
               }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl"
             >
               <motion.div
-                animate={{ 
-                  rotate: [0, 5, 0],
-                }}
+                animate={{ rotate: [0, 4, 0] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="text-4xl mb-4"
+                className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 text-sm font-bold tracking-[0.18em] text-gold"
               >
-                {location.icon}
+                {item.icon}
               </motion.div>
-              
-              <h3 className="text-xl font-bold text-primary mb-1">{location.city}</h3>
-              <p className="text-sm text-gold font-semibold mb-3">{location.province}</p>
-              
-              <div className="space-y-2 text-sm text-gray-600">
-                <p className="flex items-start gap-2">
-                  <span className="text-gold flex-shrink-0">📍</span>
-                  {location.address}
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-gold flex-shrink-0">📞</span>
-                  {location.phone}
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-gold flex-shrink-0">✉️</span>
-                  {location.email}
-                </p>
-              </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full mt-4 bg-gold/10 text-gold px-4 py-2 rounded-btn font-semibold hover:bg-gold hover:text-white transition-all duration-300"
-              >
-                Get Directions
-              </motion.button>
+              <p className="text-sm font-semibold uppercase tracking-wider text-gold">
+                {item.label}
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-primary">{item.subtitle}</h3>
+              <p className="mt-3 font-semibold text-charcoal">{item.detail}</p>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">{item.meta}</p>
             </motion.div>
           ))}
         </div>

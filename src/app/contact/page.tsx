@@ -1,38 +1,20 @@
 import { Metadata } from 'next';
-import ContactHero from '@/components/contact/ContactHero';
-import ContactForm from '@/components/contact/ContactForm';
-import BookingCalendar from '@/components/contact/BookingCalendar';
-import Locations from '@/components/contact/Locations';
+import ContactLanding from '@/components/contact/ContactLanding';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Contact JLNurse360 | Book a Strategy Call for Nurse Business Guidance',
+  title: 'Contact JL Nurse 360',
   description:
-    'Contact JLNurse360 to book a strategy call, ask questions, and explore nurse entrepreneurship, wellness products, and business support in Canada.',
+    'Have questions about Nurse2Agency, Farmasi, Kokoshea, or working with Jean? Contact JL Nurse 360 and book a call.',
   path: '/contact',
   keywords: [
-    'book nurse strategy call',
-    'contact JLNurse360',
-    'nurse business consultation',
-    'nurse entrepreneurship support Canada',
+    'contact JL Nurse 360',
+    'book a call with Jean Lewis',
+    'nurse2agency contact',
+    'Farmasi and Kokoshea contact',
   ],
 });
 
 export default function ContactPage() {
-  return (
-    <>
-      <div id="contact-overview">
-        <ContactHero />
-      </div>
-      <div id="contact-form">
-        <ContactForm />
-      </div>
-      <div id="strategy-call">
-        <BookingCalendar />
-      </div>
-      <div id="service-locations">
-        <Locations />
-      </div>
-    </>
-  );
+  return <ContactLanding />;
 }

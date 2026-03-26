@@ -17,6 +17,28 @@ export default function Footer() {
             <p className="text-xs text-gray-300 sm:text-sm">
               Helping Canadian nurses transition from bedside to business ownership.
             </p>
+            <div className="mt-4 space-y-2 text-xs text-gray-300 sm:text-sm">
+              <p>
+                <a href="mailto:info@JLNurse360.com" className="transition hover:text-gold">
+                  info@JLNurse360.com
+                </a>
+              </p>
+              <p>
+                <a href="tel:+16477748336" className="transition hover:text-gold">
+                  Jean Lewis +1 (647) 774-8336
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.JLNurse360.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:text-gold"
+                >
+                  www.JLNurse360.com
+                </a>
+              </p>
+            </div>
           </div>
 
           <div className="text-center sm:text-left">
@@ -62,10 +84,31 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-
-            <p className="mt-2 text-xs text-gray-400">
-              <span className="font-semibold">WhatsApp:</span> +234 123 456 789
-            </p>
+            <div className="space-y-2 text-xs text-gray-400 sm:text-sm">
+              <p>
+                <span className="font-semibold">Email:</span>{' '}
+                <a href="mailto:info@JLNurse360.com" className="transition hover:text-gold">
+                  info@JLNurse360.com
+                </a>
+              </p>
+              <p>
+                <span className="font-semibold">Phone:</span>{' '}
+                <a href="tel:+16477748336" className="transition hover:text-gold">
+                  +1 (647) 774-8336
+                </a>
+              </p>
+              <p>
+                <span className="font-semibold">Website:</span>{' '}
+                <a
+                  href="https://www.JLNurse360.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:text-gold"
+                >
+                  www.JLNurse360.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 
@@ -87,18 +130,22 @@ export default function Footer() {
 
           <div className={`overflow-hidden transition-all duration-300 ${showDisclaimer ? 'mt-4 max-h-96' : 'max-h-0'}`}>
             <div className="space-y-2 rounded-lg bg-gray-900/50 p-4 text-xs text-gray-400">
-              <p>This website provides general information and does not constitute legal, financial, or professional advice. Results may vary and individual outcomes depend on various factors.</p>
-              <p>JL Nurse 360 is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
-              <p>By using this site, you agree to our Terms of Service and Privacy Policy. All testimonials are from real clients but individual results may vary.</p>
+              <p>
+                <span className="font-semibold text-white">Disclaimer</span>
+              </p>
+              <p>
+                JL Nurse 360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
+              </p>
             </div>
           </div>
         </div>
 
         <div className="mt-6 hidden border-t border-gray-800 pt-4 sm:mt-8 sm:pt-6 md:mt-12 md:block md:pt-8">
-          <div className="grid grid-cols-1 gap-4 text-xs text-gray-400 md:grid-cols-3">
-            <p>This website provides general information and does not constitute legal, financial, or professional advice. Results may vary and individual outcomes depend on various factors.</p>
-            <p>JL Nurse 360 is not responsible for any actions taken based on the information provided. Always consult with qualified professionals before making business decisions.</p>
-            <p>By using this site, you agree to our Terms of Service and Privacy Policy. All testimonials are from real clients but individual results may vary.</p>
+          <div className="rounded-lg bg-gray-900/40 p-4 text-xs text-gray-400">
+            <p className="font-semibold text-white">Disclaimer</p>
+            <p className="mt-2">
+              JL Nurse 360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
+            </p>
           </div>
         </div>
 

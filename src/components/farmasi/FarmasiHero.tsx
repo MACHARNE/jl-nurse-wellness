@@ -17,6 +17,8 @@ export default function FarmasiHero() {
           preload="metadata"
           className="h-full w-full object-contain object-center bg-black"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f3ef]/78 via-[#ffffff]/50 to-[#f6f3ef]/76" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2b2b2b]/18 via-transparent to-[#c9a14a]/10" />
       </div>
 
       <div className="absolute top-20 right-20 w-64 h-64 bg-gold/20 rounded-full blur-3xl animate-pulseSlow z-0"></div>
@@ -33,7 +35,7 @@ export default function FarmasiHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block text-gold font-semibold text-sm uppercase tracking-wider bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-gold/30"
+            className="mb-6 inline-block rounded-full border border-gold/30 bg-white/70 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold backdrop-blur-sm"
           >
             Farmasi with JL Nurse 360
           </motion.span>
@@ -42,8 +44,8 @@ export default function FarmasiHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-            style={{ textShadow: '0 4px 8px rgba(0,0,0,0.3)' }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight"
+            style={{ textShadow: '0 4px 8px rgba(246,243,239,0.45)' }}
           >
             Beauty, Wellness, and <span className="text-gold">Flexible Income</span>
           </motion.h1>
@@ -52,8 +54,7 @@ export default function FarmasiHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
-            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+            className="mb-8 mx-auto max-w-2xl rounded-2xl border border-white/70 bg-white/65 px-5 py-4 text-lg text-charcoal shadow-xl backdrop-blur-sm sm:text-xl md:text-2xl"
           >
             Discover Farmasi products and explore a business opportunity designed
             for busy professionals.
@@ -73,7 +74,7 @@ export default function FarmasiHero() {
             </Link>
             <Link
               href="/farmasi#learn-more"
-              className="border-2 border-white bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-btn font-bold text-lg hover:bg-white hover:text-primary-dark transition transform hover:scale-105"
+              className="rounded-btn border-2 border-primary/20 bg-white/75 px-8 py-4 text-lg font-bold text-primary backdrop-blur-sm transition transform hover:scale-105 hover:bg-white hover:text-primary-dark"
             >
               Learn More
             </Link>
