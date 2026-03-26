@@ -4,23 +4,53 @@ import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import StickyCTA from '@/components/StickyCTA';  // Import the Sticky CTA component
+import { buildMetadata, siteConfig } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  inLanguage: 'en-CA',
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'JLNurse360',
+  url: siteConfig.url,
+  logo: `${siteConfig.url}${siteConfig.defaultImage}`,
+  founder: 'Jean Lewis RN',
+};
+
 export const metadata: Metadata = {
+  ...buildMetadata({
+    title: 'JLNurse360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
+    description:
+      'JLNurse360 helps Canadian nurses grow income beyond the bedside through nurse entrepreneurship, wellness products, and practical business guidance.',
+    path: '/',
+    keywords: [
+      'nurse entrepreneurship Canada',
+      'nursing agency startup Canada',
+      'nurse side income',
+      'nurse wellness business',
+      'Farmasi for nurses',
+      'Kokoshea skincare',
+      'Jean Lewis RN',
+    ],
+  }),
   title: {
-    default: 'JLNurse360 | Nursing. Wellness. Entrepreneurship.',
-    template: '%s | JLNurse360'
+    default: 'JLNurse360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
+    template: '%s | JLNurse360',
   },
   icons: {
     icon: '/images/fev.png',
     shortcut: '/images/fev.png',
     apple: '/images/fev.png',
   },
-  description:
-    'Empowering nurses to build income, wellness, and business ownership. Helping nurses build income beyond the bedside.',
-  keywords:
-    'nurse entrepreneurship, nursing wellness, nurse business ownership, income beyond bedside, nurse entrepreneur Canada, nurse business platform, caregiver to business builder',
   authors: [{ name: 'Jean Lewis RN' }],
   creator: 'Jean Lewis RN',
   publisher: 'JLNurse360',
@@ -29,34 +59,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://jlnursewellness.com'),
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title: 'JLNurse360 | The Complete Nurse Lifestyle & Business Platform',
-    description:
-      'Empowering nurses to build income, wellness, and business ownership. From caregiver to business builder.',
-    url: 'https://jlnursewellness.com',
-    siteName: 'JLNurse360',
-    images: [
-      {
-        url: 'https://jlnursewellness.com/images/JLLOGO.jpg',
-        width: 1200,
-        height: 1200,
-        alt: 'JLNurse360 Logo',
-      },
-    ],
-    locale: 'en_CA',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'JLNurse360 | Nursing. Wellness. Entrepreneurship.',
-    description:
-      'Empowering nurses to build income, wellness, and business ownership.',
-    images: ['https://jlnursewellness.com/images/JLLOGO.jpg'],
-  },
+  metadataBase: new URL(siteConfig.url),
   robots: {
     index: true,
     follow: true,
@@ -78,6 +81,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

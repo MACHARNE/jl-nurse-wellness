@@ -33,7 +33,7 @@ export default function DualIncome() {
               flexible business opportunity.
             </p>
             <Link
-              href="/farmasi"
+              href="/farmasi#farmasi-products"
               className="mt-6 inline-flex rounded-btn bg-gold px-6 py-3 text-sm font-semibold text-primary-dark transition hover:bg-gold-dark sm:text-base"
             >
               Visit Farmasi Store
@@ -53,7 +53,7 @@ export default function DualIncome() {
               essentials.
             </p>
             <Link
-              href="/kokoshea"
+              href="/kokoshea#kokoshea-products"
               className="mt-6 inline-flex rounded-btn bg-gold px-6 py-3 text-sm font-semibold text-primary-dark transition hover:bg-gold-dark sm:text-base"
             >
               Shop Kokoshea

@@ -28,13 +28,13 @@ export default function ResourceHero() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/contact"
+              href="/contact#strategy-call"
               className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary transition-all duration-300 hover:scale-105 hover:bg-gold-dark"
             >
               Book a Strategy Call
             </Link>
             <Link
-              href="/program"
+              href="/program#program-overview"
               className="rounded-btn border-2 border-white/40 bg-white/10 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:bg-white hover:text-primary"
             >
               Explore the Core Program

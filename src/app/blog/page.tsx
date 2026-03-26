@@ -1,10 +1,18 @@
 import type { Metadata } from 'next';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Blog',
+export const metadata: Metadata = buildMetadata({
+  title: 'JLNurse360 Blog | Nursing, Wellness, and Entrepreneurship Articles',
   description:
-    'Read JLNurse360 blog posts on nursing, wellness, entrepreneurship, and building income beyond the bedside.',
-};
+    'Read JLNurse360 blog content on nursing, wellness, business ownership, and building income beyond the bedside.',
+  path: '/blog',
+  keywords: [
+    'nurse entrepreneurship blog',
+    'nurse business articles',
+    'nursing wellness blog',
+    'income beyond bedside blog',
+  ],
+});
 
 export default function BlogPage() {
   return (

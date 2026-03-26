@@ -36,7 +36,7 @@ export default function FinalCTA() {
               Book a Strategy Call
             </Link>
             <Link
-              href="/resources"
+              href="/resources#free-guides"
               className="inline-flex rounded-btn border-2 border-gold/40 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-gold/10"
             >
               Explore All Services

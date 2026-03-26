@@ -26,7 +26,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden">
+    <section
+      id="hero"
+      ref={sectionRef}
+      className="relative min-h-screen overflow-hidden"
+    >
       <div className="absolute inset-0 z-0">
         <video
           src="/video/FARMASI.mp4"
@@ -80,7 +84,7 @@ export default function Hero() {
 
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
-                href="/#strategy-call"
+                href="/contact#strategy-call"
                 className="rounded-btn border border-gold/30 bg-gold px-6 py-3 text-center text-sm font-bold text-primary-dark shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-gold-dark sm:px-8 sm:py-4 sm:text-base"
                 style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
               >

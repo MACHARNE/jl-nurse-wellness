@@ -7,22 +7,45 @@ import WhyNursesLoveFarmasi from '@/components/farmasi/WhyNursesLoveFarmasi';
 import IncomeOpportunity from '@/components/farmasi/IncomeOpportunity';
 import HowItWorks from '@/components/farmasi/HowItWorks';
 import FarmasiCTA from '@/components/farmasi/FarmasiCTA';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Farmasi with JL Nurse 360',
-  description: 'Premium skincare, flexible income, perfect schedule fit. Join Farmasi and build a wellness business alongside your nursing career.',
-};
+export const metadata: Metadata = buildMetadata({
+  title: 'Farmasi for Nurses | Skincare, Wellness Products, and Flexible Income',
+  description:
+    'Discover Farmasi with JLNurse360 for skincare, beauty, wellness products, and a flexible income opportunity that fits around nursing.',
+  path: '/farmasi',
+  keywords: [
+    'Farmasi Canada nurse',
+    'Farmasi business opportunity',
+    'nurse wellness products',
+    'Farmasi skincare',
+  ],
+});
 
 export default function FarmasiPage() {
   return (
     <>
-      <FarmasiHero />
-      <WhyFarmasi />
-      <ProductShowcase />
-      <WhyNursesLoveFarmasi />
-      <IncomeOpportunity />
-      <HowItWorks />
-      <FarmasiCTA />
+      <div id="farmasi-overview">
+        <FarmasiHero />
+      </div>
+      <div id="why-farmasi">
+        <WhyFarmasi />
+      </div>
+      <div id="farmasi-products">
+        <ProductShowcase />
+      </div>
+      <div id="farmasi-for-nurses">
+        <WhyNursesLoveFarmasi />
+      </div>
+      <div id="farmasi-income-opportunity">
+        <IncomeOpportunity />
+      </div>
+      <div id="farmasi-how-it-works">
+        <HowItWorks />
+      </div>
+      <div id="farmasi-next-step">
+        <FarmasiCTA />
+      </div>
     </>
   );
 }

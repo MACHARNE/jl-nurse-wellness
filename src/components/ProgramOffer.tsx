@@ -29,7 +29,7 @@ export default function ProgramOffer() {
               you a practical path toward business ownership and agency development.
             </p>
             <Link
-              href="/program"
+              href="/program#program-overview"
               className="mt-6 inline-flex rounded-btn bg-gold px-6 py-3 text-sm font-semibold text-primary transition hover:bg-gold-dark sm:text-base"
             >
               Start Your Nurse2Agency Journey

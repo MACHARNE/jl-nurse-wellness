@@ -7,17 +7,17 @@ const posts = [
   {
     title: 'How nurses can position themselves as founders, not just side hustlers',
     excerpt: 'A more professional way to think about your transition into business ownership.',
-    href: '/contact',
+    href: '/program#program-overview',
   },
   {
     title: 'What to validate before launching a nurse-led service business',
     excerpt: 'A practical look at demand, trust, pricing, and operational readiness.',
-    href: '/program',
+    href: '/program#program-benefits',
   },
   {
     title: 'The difference between extra income and a true business asset',
     excerpt: 'How to build something that has structure, repeatability, and long-term value.',
-    href: '/resources',
+    href: '/resources#free-guides',
   },
 ];
 
