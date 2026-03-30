@@ -83,8 +83,8 @@ export default function BlogLanding() {
   return (
     <div className="bg-white">
       <section className="relative overflow-hidden py-20 text-primary md:py-28">
-        <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-gold/10 opacity-0 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-white/5 opacity-0 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <motion.div
@@ -97,12 +97,18 @@ export default function BlogLanding() {
               Editorial Insights
             </span>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+              <span
+                style={{ textShadow: '0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(11,31,58,0.16), 0 12px 28px rgba(11,31,58,0.12)' }}
+              >
               Practical articles for nurses building{' '}
               <span className="text-gold">income, wellness, and ownership</span>
+              </span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/80">
+              <span style={{ textShadow: '0 1px 0 rgba(255,255,255,0.72), 0 8px 18px rgba(11,31,58,0.08)' }}>
               Explore thoughtful reads across entrepreneurship, agency startup, beauty,
               self-care, and business growth, all shaped by the mission of JL Nurse 360.
+              </span>
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

@@ -19,7 +19,7 @@ export default function ContactHero() {
           rotate: [0, 90, 0]
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute top-20 right-20 w-64 h-64 bg-gold/10 rounded-full blur-3xl"
+        className="absolute top-20 right-20 w-64 h-64 bg-gold/10 opacity-0 rounded-full blur-3xl"
       />
       
       <motion.div
@@ -28,7 +28,7 @@ export default function ContactHero() {
           opacity: [0.1, 0.15, 0.1],
         }}
         transition={{ duration: 15, repeat: Infinity, delay: 2 }}
-        className="absolute bottom-20 left-20 w-80 h-80 bg-gold/10 rounded-full blur-3xl"
+        className="absolute bottom-20 left-20 w-80 h-80 bg-gold/10 opacity-0 rounded-full blur-3xl"
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">

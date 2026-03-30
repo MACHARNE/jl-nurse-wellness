@@ -41,8 +41,6 @@ export default function Hero() {
           preload="metadata"
           className="h-full w-full object-contain object-center bg-black"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f3ef]/78 via-[#f6f3ef]/52 to-[#f6f3ef]/74" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2b2b2b]/22 via-transparent to-[#c9a14a]/12" />
       </div>
 
       <div className="absolute top-0 right-0 z-0 h-48 w-48 rounded-full bg-gold/20 blur-3xl sm:h-64 sm:w-64 md:h-96 md:w-96 animate-pulseSlow" />
@@ -68,15 +66,15 @@ export default function Hero() {
             <style jsx>{`
               h1 {
                 text-shadow:
-                  0 4px 8px rgba(246, 243, 239, 0.55),
-                  0 2px 4px rgba(246, 243, 239, 0.45),
-                  0 0 20px rgba(246, 243, 239, 0.2);
+                  0 1px 0 rgba(255, 255, 255, 0.9),
+                  0 3px 10px rgba(11, 31, 58, 0.18),
+                  0 10px 24px rgba(11, 31, 58, 0.14);
               }
             `}</style>
 
             <p
-              className="mx-auto mb-6 max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-base leading-relaxed text-charcoal shadow-xl backdrop-blur-sm sm:mb-8 sm:text-lg md:text-xl"
-              style={{ textShadow: "0 1px 1px rgba(255,255,255,0.25)" }}
+              className="mx-auto mb-6 max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-base font-semibold leading-relaxed text-charcoal shadow-2xl backdrop-blur-xl sm:mb-8 sm:text-lg md:text-xl"
+              style={{ textShadow: "0 1px 0 rgba(255,255,255,0.82), 0 8px 18px rgba(11,31,58,0.08)" }}
             >
               JL Nurse 360 helps RPNs and RNs in Canada grow through nurse
               entrepreneurship, wellness products, and practical business guidance.
@@ -92,7 +90,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/#lead-magnet"
-                className="rounded-btn border-2 border-primary/20 bg-white/75 px-6 py-3 text-center text-sm font-bold text-primary shadow-2xl backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-primary-dark sm:px-8 sm:py-4 sm:text-base"
+                className="rounded-btn border border-primary/15 bg-white/85 px-6 py-3 text-center text-sm font-bold text-primary shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white hover:text-primary-dark sm:px-8 sm:py-4 sm:text-base"
               >
                 Download Free Nurse Starter Guide
               </Link>

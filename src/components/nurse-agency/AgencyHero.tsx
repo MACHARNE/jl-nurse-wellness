@@ -46,8 +46,8 @@ export default function AgencyHero() {
         </AnimatePresence>
 
         {/* Multiple overlay layers for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f3ef]/76 via-[#ffffff]/46 to-[#f6f3ef]/76"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2b2b2b]/28 via-transparent to-[#c9a14a]/12"></div>
+        <div className="absolute inset-0 opacity-0 bg-gradient-to-r from-[#f6f3ef]/76 via-[#ffffff]/46 to-[#f6f3ef]/76"></div>
+        <div className="absolute inset-0 opacity-0 bg-gradient-to-t from-[#2b2b2b]/28 via-transparent to-[#c9a14a]/12"></div>
       </div>
 
       {/* Floating particles/elements */}
@@ -59,7 +59,7 @@ export default function AgencyHero() {
         transition={{ duration: 8, repeat: Infinity }}
         className="absolute top-20 left-20 w-32 h-32 opacity-20"
       >
-        <div className="w-full h-full rounded-full bg-gold/30 blur-3xl"></div>
+        <div className="w-full h-full rounded-full bg-gold/30 opacity-0 blur-3xl"></div>
       </motion.div>
 
       <motion.div
@@ -70,7 +70,7 @@ export default function AgencyHero() {
         transition={{ duration: 10, repeat: Infinity, delay: 1 }}
         className="absolute bottom-20 right-20 w-40 h-40 opacity-20"
       >
-        <div className="w-full h-full rounded-full bg-gold/20 blur-3xl"></div>
+        <div className="w-full h-full rounded-full bg-gold/20 opacity-0 blur-3xl"></div>
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 py-20">
@@ -92,6 +92,7 @@ export default function AgencyHero() {
               },
             }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
+            style={{ textShadow: '0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(11,31,58,0.16), 0 12px 28px rgba(11,31,58,0.12)' }}
           >
             {'From Nurse to '.split('').map((char, index) => (
               <motion.span
@@ -122,6 +123,7 @@ export default function AgencyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-8 mx-auto max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-lg text-charcoal shadow-xl backdrop-blur-sm sm:text-xl md:text-2xl"
+            style={{ textShadow: '0 1px 0 rgba(255,255,255,0.72), 0 8px 18px rgba(11,31,58,0.08)' }}
           >
             A practical path for nurses who want to explore agency ownership and healthcare
             entrepreneurship.
