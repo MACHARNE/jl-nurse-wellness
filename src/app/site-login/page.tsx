@@ -73,7 +73,7 @@ export default async function SiteLoginPage({
               type="submit"
               className="w-full rounded-md bg-[#0b1f3a] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#08162b]"
             >
-              Access website
+              Login
             </button>
           </form>
         </div>
