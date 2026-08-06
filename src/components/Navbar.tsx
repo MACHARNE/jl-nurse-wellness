@@ -9,6 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Jean' },
   { href: '/program', label: 'Nurse2Agency' },
+  { href: '/travel-nurse-consultation', label: 'Travel Nurse' },
   { href: '/farmasi', label: 'Farmasi' },
   { href: '/kokoshea', label: 'Kokoshea' },
   { href: '/resources', label: 'Resources' },
@@ -16,7 +17,18 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const searchableRoutes = ['/', '/about', '/program', '/farmasi', '/kokoshea', '/resources', '/blog', '/contact', '/nurse-agency'];
+const searchableRoutes = [
+  '/',
+  '/about',
+  '/program',
+  '/travel-nurse-consultation',
+  '/farmasi',
+  '/kokoshea',
+  '/resources',
+  '/blog',
+  '/contact',
+  '/nurse-agency',
+];
 
 type SearchIndexEntry = {
   route: string;
@@ -240,7 +252,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center md:hidden">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/JLLOGO.jpg"
+              src="/images/fev.png"
               alt="JL Nurse & Wellness Logo"
               width={40}
               height={40}
@@ -287,7 +299,7 @@ export default function Navbar() {
         <div className="hidden md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/JLLOGO.jpg"
+              src="/images/fev.png"
               alt="JL Nurse & Wellness Logo"
               width={40}
               height={40}

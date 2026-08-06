@@ -9,6 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/farmasi',
     '/kokoshea',
     '/program',
+    '/travel-nurse-consultation',
+    '/travel-nurse-consultation/what-youll-receive',
+    '/travel-nurse-consultation/consultation-packages',
     '/resources',
     '/blog',
   ];

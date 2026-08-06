@@ -5,7 +5,7 @@ export const siteConfig = {
   url: 'https://jlnursewellness.com',
   description:
     'JLNurse360 helps Canadian nurses build income, wellness, and business ownership through nurse entrepreneurship, wellness products, and practical guidance.',
-  defaultImage: '/images/JLLOGO.jpg',
+  defaultImage: '/images/fev.png',
 };
 
 type MetadataOptions = {

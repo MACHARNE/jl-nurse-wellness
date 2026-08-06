@@ -47,6 +47,7 @@ export default function Footer() {
               <li><Link href="/" className="transition hover:text-gold">Home</Link></li>
               <li><Link href="/about" className="transition hover:text-gold">About</Link></li>
               <li><Link href="/program" className="transition hover:text-gold">Nurse to Agency</Link></li>
+              <li><Link href="/travel-nurse-consultation" className="transition hover:text-gold">Travel Nurse Consultation</Link></li>
               <li><Link href="/farmasi" className="transition hover:text-gold">Farmasi</Link></li>
               <li><Link href="/kokoshea" className="transition hover:text-gold">Kokoshea</Link></li>
             </ul>

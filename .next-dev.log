@@ -1,0 +1,27 @@
+
+> jl-nurse-wellness@0.1.0 dev
+> next dev --turbopack --hostname 127.0.0.1 --port 3000
+
+▲ Next.js 16.1.7 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+
+✓ Starting...
+Creating turbopack project {
+  dir: 'C:\\Users\\USER\\Desktop\\jl-nurse-wellness-job\\jl-nurse-wellness',
+  testMode: true
+}
+✓ Ready in 16.5s
+○ Compiling /travel-nurse-consultation/consultation-packages ...
+ GET /travel-nurse-consultation 200 in 8.9s (compile: 5.9s, render: 3.0s)
+ GET /about 200 in 8.7s (compile: 6.9s, render: 1772ms)
+ GET / 200 in 8.9s (compile: 3.9s, render: 5.0s)
+ GET /travel-nurse-consultation 200 in 5.3s (compile: 1602ms, render: 3.7s)
+ GET /program 200 in 5.3s (compile: 3.2s, render: 2.0s)
+ GET /farmasi 200 in 7.1s (compile: 2.3s, render: 4.8s)
+ GET /kokoshea 200 in 7.1s (compile: 5.1s, render: 2.0s)
+ GET /nurse-agency 308 in 11.2s (compile: 2.2s, render: 9.0s)
+ GET /blog 200 in 11.2s (compile: 4.3s, render: 7.0s)
+ GET /resources 200 in 11.3s (compile: 3.4s, render: 7.9s)
+ GET /contact 200 in 11.2s (compile: 6.0s, render: 5.2s)
+ GET /program 200 in 1578ms (compile: 80ms, render: 1499ms)
