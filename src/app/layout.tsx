@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import StickyCTA from '@/components/StickyCTA';  // Import the Sticky CTA component
+import StickyCTA from '@/components/StickyCTA';
 import { buildMetadata, siteConfig } from '@/lib/seo';
-import { SITE_AUTH_COOKIE, siteSessionIsValid } from '@/lib/site-auth';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -85,16 +83,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies();
-  const isAuthenticated = await siteSessionIsValid(
-    cookieStore.get(SITE_AUTH_COOKIE)?.value,
-  );
-
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
@@ -106,14 +99,12 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        {isAuthenticated ? (
-          <Suspense fallback={null}>
-            <Navbar />
-          </Suspense>
-        ) : null}
+        <Suspense fallback={null}>
+          <Navbar />
+        </Suspense>
         <main className="min-h-screen">{children}</main>
-        {isAuthenticated ? <Footer /> : null}
-        {isAuthenticated ? <StickyCTA /> : null}
+        <Footer />
+        <StickyCTA />
       </body>
     </html>
   );
