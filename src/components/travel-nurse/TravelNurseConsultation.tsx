@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Transition } from 'framer-motion';
 
 type TravelNurseConsultationView = 'overview' | 'receive' | 'packages';
 
@@ -232,9 +232,9 @@ const sectionAnimation = {
   visible: { opacity: 1, y: 0 },
 };
 
-const sectionTransition = {
+const sectionTransition: Transition = {
   duration: 0.7,
-  ease: [0.22, 1, 0.36, 1],
+  ease: 'easeOut',
 };
 
 const iconPaths: Record<IconName, ReactNode> = {
@@ -949,11 +949,13 @@ function PackagesPage() {
                   {item.title}
                 </h2>
                 <p className="mt-3 leading-relaxed text-slate-600">{item.description}</p>
-                <ul className="mt-6 grid flex-1 gap-3">
-                  {item.items.map((detail) => (
-                    <CheckItem key={detail}>{detail}</CheckItem>
-                  ))}
-                </ul>
+                {item.items?.length ? (
+                  <ul className="mt-6 grid flex-1 gap-3">
+                    {item.items.map((detail) => (
+                      <CheckItem key={detail}>{detail}</CheckItem>
+                    ))}
+                  </ul>
+                ) : null}
                 <Link
                   href={bookHref}
                   className="mt-8 inline-flex items-center justify-center rounded-btn bg-gold px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-gold-dark"
