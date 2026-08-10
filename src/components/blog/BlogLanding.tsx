@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -11,11 +12,9 @@ type BlogSection = {
 };
 
 type BlogArticle = {
-  number: string;
   title: string;
   category: string;
   slug: string;
-  suggestedUrl: string;
   image: string;
   intro: string[];
   sections: BlogSection[];
@@ -26,6 +25,19 @@ type BlogArticle = {
   note?: string;
 };
 
+type ReaderStatus = 'idle' | 'playing' | 'paused';
+
+type ReaderState = {
+  articleSlug: string | null;
+  blockId: string | null;
+  status: ReaderStatus;
+};
+
+type ReadBlock = {
+  id: string;
+  text: string;
+};
+
 const categories = [
   'Nurse Entrepreneurship',
   'Agency Startup Tips',
@@ -34,15 +46,15 @@ const categories = [
   'Business Growth',
 ];
 
+const femaleVoicePattern =
+  /female|samantha|victoria|zira|aria|jenny|serena|karen|moira|tessa|susan|joanna|salli|amy|emma|olivia|ava/i;
+
 const articles: BlogArticle[] = [
   {
-    number: '01',
     title: 'From Nurse to Entrepreneur: Turning Your Nursing Experience Into a Business',
     category: 'Nurse Entrepreneurship',
     slug: 'nurse-entrepreneurship-canada',
-    suggestedUrl: '/blog/nurse-entrepreneurship-canada',
-    image:
-      'https://images.unsplash.com/photo-1654154094424-43c2abae1478?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=80&w=1600',
+    image: '/images/nurse-enter.jpg',
     intro: [
       'For many nurses, nursing is more than a profession. It develops leadership, communication, problem-solving, organization, resilience, and the ability to make important decisions under pressure.',
       'These abilities can also provide a strong foundation for entrepreneurship.',
@@ -100,13 +112,10 @@ const articles: BlogArticle[] = [
     ],
   },
   {
-    number: '02',
     title: 'How to Start Building a Nursing Agency in Canada: 8 Essential Steps',
     category: 'Agency Startup Tips',
     slug: 'start-nursing-agency-canada',
-    suggestedUrl: '/blog/start-nursing-agency-canada',
-    image:
-      'https://images.unsplash.com/photo-1770922808906-2a2af9d6cd5a?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=80&w=1400',
+    image: '/images/workingsystem.jpg',
     intro: [
       'Starting a nursing agency involves much more than registering a business and finding nurses.',
       'Healthcare is regulated, and requirements can vary depending on the province, services offered, business model, and whether your organization provides staffing, recruitment, clinical services, or another type of healthcare service.',
@@ -114,24 +123,22 @@ const articles: BlogArticle[] = [
     ],
     sections: [
       {
-        heading: '1. Define Your Agency Model',
+        heading: 'Define Your Agency Model',
         paragraphs: [
           'Start by determining exactly what your agency will do. Will you focus on temporary staffing, healthcare recruitment, home care, long-term care staffing, travel nursing, or another niche?',
           'A clearly defined model makes everything else, from compliance to marketing, easier.',
         ],
       },
       {
-        heading: '2. Research Your Market',
+        heading: 'Research Your Market',
         paragraphs: [
           'Identify potential customers and understand their staffing challenges. Depending on your model, potential clients could include healthcare organizations, long-term-care organizations and other care providers.',
           'Research your competitors, local workforce availability, service gaps and the needs of your chosen geographic market.',
         ],
       },
       {
-        heading: '3. Develop Your Business Plan',
-        paragraphs: [
-          'Your plan should cover:',
-        ],
+        heading: 'Develop Your Business Plan',
+        paragraphs: ['Your plan should cover:'],
         bullets: [
           'Target market',
           'Services',
@@ -147,21 +154,21 @@ const articles: BlogArticle[] = [
         ],
       },
       {
-        heading: '4. Select an Appropriate Business Structure',
+        heading: 'Select an Appropriate Business Structure',
         paragraphs: [
           "The Government of Canada identifies planning, selecting a business structure, market research, registration, permits, licences and financing among the core considerations when starting a business.",
           "Depending on your circumstances, options may include sole proprietorship, partnership or incorporation. Do not choose a structure simply because another nurse uses it. Legal, tax and liability implications can differ significantly.",
         ],
       },
       {
-        heading: '5. Investigate Registration, Licensing and Regulatory Requirements',
+        heading: 'Investigate Registration, Licensing and Regulatory Requirements',
         paragraphs: [
           'Healthcare businesses can have additional obligations beyond normal business registration.',
           'Requirements can vary by jurisdiction and by the services you provide. Research the applicable provincial nursing regulator, government requirements, employment rules, privacy requirements and any licensing or accreditation requirements associated with your specific business.',
         ],
       },
       {
-        heading: '6. Build a Strong Recruitment System',
+        heading: 'Build a Strong Recruitment System',
         paragraphs: [
           'If your model involves staffing, your people become central to your reputation. Develop processes for:',
         ],
@@ -178,13 +185,13 @@ const articles: BlogArticle[] = [
         ],
       },
       {
-        heading: '7. Build Your Client Acquisition Strategy',
+        heading: 'Build Your Client Acquisition Strategy',
         paragraphs: [
           'A business without customers is still only an idea. Create a professional website and develop a structured approach to relationship building, outreach, referrals and digital marketing.',
         ],
       },
       {
-        heading: '8. Build for Quality, Not Just Growth',
+        heading: 'Build for Quality, Not Just Growth',
         paragraphs: [
           'Your reputation can become one of your most valuable assets. Create systems for quality assurance, incident management, feedback and continuous improvement from the beginning.',
         ],
@@ -203,13 +210,10 @@ const articles: BlogArticle[] = [
     note: 'Important: This article provides general educational information, not legal, regulatory, accounting or tax advice. Requirements vary by jurisdiction and business model.',
   },
   {
-    number: '03',
     title: 'Beauty, Wellness and Entrepreneurship: Creating a More Holistic Career as a Nurse',
     category: 'Beauty & Wellness',
     slug: 'nurses-beauty-wellness-entrepreneurship',
-    suggestedUrl: '/blog/nurses-beauty-wellness-entrepreneurship',
-    image:
-      'https://images.unsplash.com/photo-1741896136071-3f8c1d472aa8?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=80&w=1400',
+    image: '/images/skin.png',
     intro: [
       'Healthcare professionals spend much of their careers caring for other people. But wellness also involves caring for yourself.',
       'At JLNurse360, we view professional development, entrepreneurship and wellness as interconnected parts of a sustainable career.',
@@ -272,13 +276,10 @@ const articles: BlogArticle[] = [
     ],
   },
   {
-    number: '04',
     title: 'Caring for the Caregiver: Practical Self-Care for Busy Nurses',
     category: 'Self-Care for Nurses',
     slug: 'self-care-for-nurses',
-    suggestedUrl: '/blog/self-care-for-nurses',
-    image:
-      'https://images.unsplash.com/photo-1677682692769-e7250eda8a8b?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=80&w=1400',
+    image: '/images/practicalnurse.jpg',
     intro: [
       'Nurses dedicate enormous amounts of time and energy to caring for other people.',
       'Between shifts, family responsibilities, professional development and everyday life, personal wellbeing can easily move to the bottom of the priority list.',
@@ -286,37 +287,37 @@ const articles: BlogArticle[] = [
     ],
     sections: [
       {
-        heading: '1. Protect Your Recovery Time',
+        heading: 'Protect Your Recovery Time',
         paragraphs: [
           'Rest matters. Consider creating a simple post-shift routine that helps you transition away from work and into recovery.',
         ],
       },
       {
-        heading: '2. Build Small Routines',
+        heading: 'Build Small Routines',
         paragraphs: [
           'Consistency can be more manageable than trying to make dramatic lifestyle changes. A simple routine could include preparing nourishing meals, getting appropriate rest, taking breaks, maintaining social connections, and making time for activities you enjoy.',
         ],
       },
       {
-        heading: '3. Establish Healthy Professional Boundaries',
+        heading: 'Establish Healthy Professional Boundaries',
         paragraphs: [
           'Being compassionate does not require being available every minute. Appropriate boundaries around work, personal commitments and business responsibilities can help protect your time and energy.',
         ],
       },
       {
-        heading: '4. Stay Connected',
+        heading: 'Stay Connected',
         paragraphs: [
           'Nursing can be demanding. Maintaining supportive relationships with family, friends, colleagues and professional communities can provide valuable perspective and encouragement.',
         ],
       },
       {
-        heading: '5. Make Personal Care Personal',
+        heading: 'Make Personal Care Personal',
         paragraphs: [
           'Your self-care routine should fit your preferences and circumstances. For some people that might include skincare or beauty routines. For others it might mean reading, exercise, spending time outdoors, prayer or reflection, hobbies, or simply enjoying quiet time.',
         ],
       },
       {
-        heading: '6. Know When You Need Support',
+        heading: 'Know When You Need Support',
         paragraphs: [
           "Self-care is not a substitute for professional healthcare. If you are struggling physically or emotionally, consider speaking with a qualified healthcare professional or another trusted source of support.",
         ],
@@ -328,30 +329,26 @@ const articles: BlogArticle[] = [
         ],
       },
     ],
-    ctas: [
-      { label: 'Explore JLNurse360 Wellness Resources', href: '/resources' },
-    ],
+    ctas: [{ label: 'Explore JLNurse360 Wellness Resources', href: '/resources' }],
   },
   {
-    number: '05',
     title: 'From Nurse Entrepreneur to Business Leader: How to Grow Your Nurse2Agency Business',
     category: 'Business Growth',
     slug: 'grow-nursing-agency-business',
-    suggestedUrl: '/blog/grow-nursing-agency-business',
-    image: '/images/business-struture.jpg',
+    image: '/images/marketgrowth.jpg',
     intro: [
       'Launching your nursing business is only the beginning.',
       'The next challenge is creating systems that allow the organization to operate consistently, serve customers effectively and grow responsibly.',
     ],
     sections: [
       {
-        heading: 'Stage 1: Clarify Your Positioning',
+        heading: 'Clarify Your Positioning',
         paragraphs: [
           'Avoid trying to serve everyone. Define who you serve, what problem you solve, and why clients should choose you. Clear positioning makes marketing and sales significantly easier.',
         ],
       },
       {
-        heading: 'Stage 2: Build a Repeatable Client Acquisition System',
+        heading: 'Build a Repeatable Client Acquisition System',
         paragraphs: [
           'Do not depend entirely on referrals. Develop multiple channels for generating qualified prospects, such as:',
         ],
@@ -367,7 +364,7 @@ const articles: BlogArticle[] = [
         ],
       },
       {
-        heading: 'Stage 3: Build Your Digital Funnel',
+        heading: 'Build Your Digital Funnel',
         paragraphs: [
           'Your website should do more than describe your company.',
           'For Nurse2Agency entrepreneurs, a simple funnel might look like: educational content to free resource to email follow-up to consultation to qualified opportunity.',
@@ -375,26 +372,26 @@ const articles: BlogArticle[] = [
         ],
       },
       {
-        heading: 'Stage 4: Build Systems Before Scaling',
+        heading: 'Build Systems Before Scaling',
         paragraphs: [
           'Document your processes. Create repeatable workflows for inquiries, recruiting, onboarding, scheduling, customer communication, invoicing, quality assurance and follow-up.',
         ],
       },
       {
-        heading: 'Stage 5: Know Your Numbers',
+        heading: 'Know Your Numbers',
         paragraphs: [
           'Track meaningful business indicators such as leads, consultations, clients, revenue, costs and retention.',
           'Instead of focusing only on website traffic or social-media followers, measure the activities connected to business outcomes.',
         ],
       },
       {
-        heading: 'Stage 6: Build Your Brand Reputation',
+        heading: 'Build Your Brand Reputation',
         paragraphs: [
           'Healthcare businesses depend heavily on trust. Professional communication, reliable service, transparent expectations and consistent quality can help establish a stronger reputation over time.',
         ],
       },
       {
-        heading: 'Stage 7: Grow Responsibly',
+        heading: 'Grow Responsibly',
         paragraphs: [
           'Growth should never come at the expense of patient safety, regulatory obligations or service quality.',
           'For nurses moving into independent practice, professional standards and regulatory requirements continue to matter. Nursing regulators can place requirements around scope, professional responsibility, advertising, conflicts of interest and related activities.',
@@ -416,67 +413,422 @@ const articles: BlogArticle[] = [
   },
 ];
 
+function cx(...classes: Array<string | false | null | undefined>) {
+  return classes.filter(Boolean).join(' ');
+}
+
+function titleBlockId(article: BlogArticle) {
+  return `${article.slug}-title`;
+}
+
+function introBlockId(article: BlogArticle, index: number) {
+  return `${article.slug}-intro-${index}`;
+}
+
+function sectionHeadingBlockId(article: BlogArticle, sectionIndex: number) {
+  return `${article.slug}-section-${sectionIndex}-heading`;
+}
+
+function sectionParagraphBlockId(
+  article: BlogArticle,
+  sectionIndex: number,
+  paragraphIndex: number
+) {
+  return `${article.slug}-section-${sectionIndex}-paragraph-${paragraphIndex}`;
+}
+
+function sectionBulletBlockId(article: BlogArticle, sectionIndex: number, bulletIndex: number) {
+  return `${article.slug}-section-${sectionIndex}-bullet-${bulletIndex}`;
+}
+
+function noteBlockId(article: BlogArticle) {
+  return `${article.slug}-note`;
+}
+
+function buildArticleReadBlocks(article: BlogArticle): ReadBlock[] {
+  const blocks: ReadBlock[] = [{ id: titleBlockId(article), text: article.title }];
+
+  article.intro.forEach((paragraph, index) => {
+    blocks.push({ id: introBlockId(article, index), text: paragraph });
+  });
+
+  article.sections.forEach((section, sectionIndex) => {
+    blocks.push({
+      id: sectionHeadingBlockId(article, sectionIndex),
+      text: section.heading,
+    });
+
+    section.paragraphs?.forEach((paragraph, paragraphIndex) => {
+      blocks.push({
+        id: sectionParagraphBlockId(article, sectionIndex, paragraphIndex),
+        text: paragraph,
+      });
+    });
+
+    section.bullets?.forEach((bullet, bulletIndex) => {
+      blocks.push({
+        id: sectionBulletBlockId(article, sectionIndex, bulletIndex),
+        text: bullet,
+      });
+    });
+  });
+
+  if (article.note) {
+    blocks.push({ id: noteBlockId(article), text: article.note });
+  }
+
+  return blocks.filter((block) => block.text.trim().length > 0);
+}
+
+function SpeakerIcon({ isPlaying }: { isPlaying: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5 flex-shrink-0"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M5 9v6h4l5 4V5L9 9H5z"
+      />
+      {isPlaying ? (
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 9.5a4 4 0 010 5M19.5 7a7 7 0 010 10"
+        />
+      ) : null}
+    </svg>
+  );
+}
+
+function ChevronIcon({ isOpen }: { isOpen: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={cx('h-4 w-4 flex-shrink-0 transition-transform', isOpen && 'rotate-180')}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
+function ArrowIcon({ direction }: { direction: 'left' | 'right' }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5 flex-shrink-0"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      {direction === 'left' ? (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      ) : (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      )}
+    </svg>
+  );
+}
+
 export default function BlogLanding() {
+  const [activeArticleIndex, setActiveArticleIndex] = useState(0);
+  const [openCategories, setOpenCategories] = useState<string[]>([articles[0].category]);
+  const [speechSupported, setSpeechSupported] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [reader, setReader] = useState<ReaderState>({
+    articleSlug: null,
+    blockId: null,
+    status: 'idle',
+  });
+
+  const sessionRef = useRef(0);
+  const activeArticle = articles[activeArticleIndex];
+  const groupedArticles = useMemo(
+    () =>
+      categories.map((category) => ({
+        category,
+        articles: articles.filter((article) => article.category === category),
+      })),
+    []
+  );
+
+  const activeArticleIsReading = reader.articleSlug === activeArticle.slug;
+  const isPlayingActiveArticle = activeArticleIsReading && reader.status === 'playing';
+  const isPausedActiveArticle = activeArticleIsReading && reader.status === 'paused';
+
+  const highlightedClass = useCallback(
+    (blockId: string) =>
+      reader.articleSlug === activeArticle.slug && reader.blockId === blockId
+        ? 'bg-gold/20 text-primary shadow-[inset_0_0_0_1px_rgba(201,161,74,0.35)]'
+        : '',
+    [activeArticle.slug, reader.articleSlug, reader.blockId]
+  );
+
+  const stopReader = useCallback(() => {
+    sessionRef.current += 1;
+
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+
+    setReader({ articleSlug: null, blockId: null, status: 'idle' });
+  }, []);
+
+  const findPreferredVoice = useCallback(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      return null;
+    }
+
+    const availableVoices = voices.length > 0 ? voices : window.speechSynthesis.getVoices();
+    const englishVoices = availableVoices.filter((voice) =>
+      voice.lang.toLowerCase().startsWith('en')
+    );
+
+    return (
+      englishVoices.find((voice) => femaleVoicePattern.test(voice.name)) ??
+      englishVoices[0] ??
+      availableVoices[0] ??
+      null
+    );
+  }, [voices]);
+
+  const startReader = useCallback(
+    (article: BlogArticle) => {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+        setSpeechSupported(false);
+        return;
+      }
+
+      const synth = window.speechSynthesis;
+      const blocks = buildArticleReadBlocks(article);
+      const session = sessionRef.current + 1;
+      sessionRef.current = session;
+      synth.cancel();
+
+      const speakBlock = (index: number) => {
+        if (sessionRef.current !== session) {
+          return;
+        }
+
+        const block = blocks[index];
+
+        if (!block) {
+          setReader({ articleSlug: null, blockId: null, status: 'idle' });
+          return;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(block.text);
+        const preferredVoice = findPreferredVoice();
+
+        if (preferredVoice) {
+          utterance.voice = preferredVoice;
+        }
+
+        utterance.rate = 0.92;
+        utterance.pitch = 1.05;
+        utterance.onstart = () => {
+          setReader({ articleSlug: article.slug, blockId: block.id, status: 'playing' });
+        };
+        utterance.onend = () => {
+          if (sessionRef.current === session) {
+            speakBlock(index + 1);
+          }
+        };
+        utterance.onerror = () => {
+          if (sessionRef.current === session) {
+            setReader({ articleSlug: null, blockId: null, status: 'idle' });
+          }
+        };
+
+        synth.speak(utterance);
+      };
+
+      speakBlock(0);
+    },
+    [findPreferredVoice]
+  );
+
+  const toggleReader = useCallback(
+    (article: BlogArticle) => {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+        setSpeechSupported(false);
+        return;
+      }
+
+      if (reader.articleSlug === article.slug && reader.status === 'playing') {
+        window.speechSynthesis.pause();
+        setReader((current) => ({ ...current, status: 'paused' }));
+        return;
+      }
+
+      if (reader.articleSlug === article.slug && reader.status === 'paused') {
+        window.speechSynthesis.resume();
+        setReader((current) => ({ ...current, status: 'playing' }));
+        return;
+      }
+
+      startReader(article);
+    },
+    [reader.articleSlug, reader.status, startReader]
+  );
+
+  const selectArticle = useCallback(
+    (index: number) => {
+      const article = articles[index];
+
+      if (!article) {
+        return;
+      }
+
+      stopReader();
+      setActiveArticleIndex(index);
+      setOpenCategories((current) =>
+        current.includes(article.category) ? current : [...current, article.category]
+      );
+
+      if (typeof window !== 'undefined') {
+        window.history.replaceState(null, '', `#${article.slug}`);
+        window.requestAnimationFrame(() => {
+          document.getElementById('blog-reader')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        });
+      }
+    },
+    [stopReader]
+  );
+
+  const toggleCategory = useCallback((category: string) => {
+    setOpenCategories((current) =>
+      current.includes(category)
+        ? current.filter((existingCategory) => existingCategory !== category)
+        : [...current, category]
+    );
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      setSpeechSupported(false);
+      return;
+    }
+
+    const synth = window.speechSynthesis;
+    const loadVoices = () => {
+      setVoices(synth.getVoices());
+    };
+
+    setSpeechSupported(true);
+    loadVoices();
+    synth.addEventListener('voiceschanged', loadVoices);
+
+    return () => {
+      synth.removeEventListener('voiceschanged', loadVoices);
+      synth.cancel();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const slug = window.location.hash.replace('#', '');
+    const articleIndex = articles.findIndex((article) => article.slug === slug);
+
+    if (articleIndex >= 0) {
+      setActiveArticleIndex(articleIndex);
+      setOpenCategories((current) =>
+        current.includes(articles[articleIndex].category)
+          ? current
+          : [...current, articles[articleIndex].category]
+      );
+    }
+  }, []);
+
+  const previousArticleIndex =
+    activeArticleIndex === 0 ? articles.length - 1 : activeArticleIndex - 1;
+  const nextArticleIndex =
+    activeArticleIndex === articles.length - 1 ? 0 : activeArticleIndex + 1;
+
   return (
     <div className="bg-white">
-      <section className="relative overflow-hidden py-16 text-primary sm:py-20 md:py-24">
+      <section className="relative overflow-hidden border-b border-primary/10 bg-background py-14 text-primary sm:py-16 md:py-20">
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div
-            initial={{ opacity: 0, y: 26 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <span className="mb-5 inline-block rounded-full border border-gold/30 bg-white/75 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
-              JLNurse360 Blog Architecture
+            <span className="mb-5 inline-block rounded-full border border-gold/30 bg-white px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
+              JLNurse360 Blog
             </span>
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
               Practical articles for nurses building{' '}
               <span className="text-gold">income, wellness, and ownership</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/80">
-              Nurse Entrepreneurship | Agency Startup Tips | Beauty & Wellness | Self-Care
-              for Nurses | Business Growth
+              Nurse entrepreneurship, agency startup guidance, beauty and wellness,
+              self-care, and business growth in one organized reading space.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {categories.map((category, index) => (
-                <motion.a
-                  key={category}
-                  href={`#${articles[index].slug}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.08 * index }}
-                  className="rounded-full border border-primary/10 bg-white/80 px-4 py-2 text-sm font-medium text-primary/90 backdrop-blur-sm transition hover:border-gold/40 hover:text-gold"
-                >
-                  {category}
-                </motion.a>
-              ))}
+              {categories.map((category) => {
+                const categoryIndex = articles.findIndex((article) => article.category === category);
+                const isActive = activeArticle.category === category;
+
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => selectArticle(categoryIndex)}
+                    className={cx(
+                      'rounded-full border px-4 py-2 text-sm font-semibold transition',
+                      isActive
+                        ? 'border-primary bg-primary text-white'
+                        : 'border-primary/10 bg-white text-primary hover:border-gold/50 hover:text-gold'
+                    )}
+                  >
+                    {category}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.1 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_32px_80px_-28px_rgba(8,22,43,0.55)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-[0_32px_80px_-32px_rgba(8,22,43,0.5)]">
               <Image
-                src={articles[0].image}
-                alt="Business planning desk with planner and keyboard"
+                src="/images/nurse-enter.jpg"
+                alt="Nurse entrepreneur planning a business next step"
                 fill
                 priority
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">
-                  Featured Focus
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+                  Featured Reading
                 </p>
                 <p className="mt-3 max-w-sm text-xl font-semibold text-white">
-                  Content designed to help nurses move from idea to action.
+                  Content for nurses moving from professional experience into practical
+                  business growth.
                 </p>
               </div>
             </div>
@@ -484,211 +836,323 @@ export default function BlogLanding() {
         </div>
       </section>
 
-      <section className="bg-background py-14 sm:py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="mb-10 text-center"
-          >
-            <span className="inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-primary">
-              Article Index
-            </span>
-            <h2 className="mt-4 text-3xl font-bold text-primary sm:text-4xl">
-              Thoughtful reads across the core JLNurse360 themes
-            </h2>
-          </motion.div>
+      <section id="blog-reader" className="bg-white py-12 sm:py-16 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
+          <aside className="lg:sticky lg:top-24">
+            <div className="rounded-lg border border-primary/10 bg-background p-4 shadow-[0_18px_45px_-35px_rgba(11,31,58,0.4)]">
+              <div className="mb-4 border-b border-primary/10 pb-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+                  Browse
+                </p>
+                <h2 className="mt-2 text-xl font-bold text-primary">Categories</h2>
+              </div>
 
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-            {articles.map((article, index) => (
-              <motion.article
-                key={article.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: index * 0.08 }}
-                viewport={{ once: true, amount: 0.15 }}
-                whileHover={{ y: -6 }}
-                className="group overflow-hidden rounded-[1.8rem] border border-gray-100 bg-white shadow-[0_20px_50px_-26px_rgba(11,31,58,0.26)] transition-all duration-300 hover:shadow-[0_26px_60px_-24px_rgba(11,31,58,0.32)]"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  />
-                </div>
+              <div className="space-y-3">
+                {groupedArticles.map((group) => {
+                  const isOpen = openCategories.includes(group.category);
+                  const isActiveCategory = activeArticle.category === group.category;
 
-                <div className="p-7">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-primary/8 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                      {article.category}
-                    </span>
-                    <span className="text-sm font-semibold text-gold">{article.number}</span>
-                  </div>
+                  return (
+                    <div key={group.category} className="rounded-lg border border-primary/10 bg-white">
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        onClick={() => toggleCategory(group.category)}
+                        className={cx(
+                          'flex w-full items-center justify-between gap-3 rounded-lg px-4 py-3 text-left text-sm font-bold transition',
+                          isActiveCategory ? 'text-primary' : 'text-charcoal hover:text-primary'
+                        )}
+                      >
+                        <span>{group.category}</span>
+                        <ChevronIcon isOpen={isOpen} />
+                      </button>
 
-                  <h3 className="mt-5 text-2xl font-bold leading-snug text-primary">
-                    {article.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-gray-500">
-                    Suggested URL: {article.suggestedUrl}
-                  </p>
-                  <p className="mt-4 leading-relaxed text-gray-600">{article.intro[0]}</p>
+                      {isOpen ? (
+                        <div className="border-t border-primary/10 p-2">
+                          {group.articles.map((article) => {
+                            const articleIndex = articles.findIndex(
+                              (item) => item.slug === article.slug
+                            );
+                            const isActiveArticle = article.slug === activeArticle.slug;
 
-                  <a
-                    href={`#${article.slug}`}
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-gold transition-all duration-300 hover:gap-3"
-                  >
-                    Read article
-                    <span aria-hidden="true">-&gt;</span>
-                  </a>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-14 sm:py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="space-y-12">
-            {articles.map((article, index) => (
-              <motion.article
-                key={article.slug}
-                id={article.slug}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.12 }}
-                className="scroll-mt-28 border-b border-primary/10 pb-12 last:border-b-0 last:pb-0"
-              >
-                <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                  <div className="lg:sticky lg:top-24">
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-28px_rgba(11,31,58,0.35)]">
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 36vw"
-                      />
+                            return (
+                              <button
+                                key={article.slug}
+                                type="button"
+                                onClick={() => selectArticle(articleIndex)}
+                                className={cx(
+                                  'block w-full rounded-lg px-3 py-3 text-left text-sm leading-snug transition',
+                                  isActiveArticle
+                                    ? 'bg-primary text-white'
+                                    : 'text-gray-700 hover:bg-background hover:text-primary'
+                                )}
+                              >
+                                {article.title}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : null}
                     </div>
-                    <div className="mt-5 rounded-2xl border border-gold/20 bg-background p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                        Category
-                      </p>
-                      <p className="mt-2 text-lg font-bold text-primary">{article.category}</p>
-                      <p className="mt-4 text-sm text-gray-500">
-                        Suggested URL: {article.suggestedUrl}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold">
-                      {article.number}
-                    </p>
-                    <h2 className="mt-3 text-3xl font-bold leading-tight text-primary sm:text-4xl">
-                      {article.title}
-                    </h2>
-
-                    <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
-                      {article.intro.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-
-                    <div className="mt-8 space-y-8">
-                      {article.sections.map((section) => (
-                        <section key={`${article.slug}-${section.heading}`}>
-                          <h3 className="text-2xl font-bold text-primary">{section.heading}</h3>
-                          {section.paragraphs ? (
-                            <div className="mt-3 space-y-3 text-base leading-relaxed text-gray-700 sm:text-lg">
-                              {section.paragraphs.map((paragraph) => (
-                                <p key={paragraph}>{paragraph}</p>
-                              ))}
-                            </div>
-                          ) : null}
-
-                          {section.bullets ? (
-                            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                              {section.bullets.map((bullet) => (
-                                <li
-                                  key={bullet}
-                                  className="flex items-start gap-3 rounded-2xl bg-background p-4 text-sm leading-relaxed text-gray-700 sm:text-base"
-                                >
-                                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-gold" />
-                                  <span>{bullet}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : null}
-                        </section>
-                      ))}
-                    </div>
-
-                    {article.note ? (
-                      <p className="mt-8 rounded-2xl border border-gold/25 bg-gold/10 p-5 text-sm leading-relaxed text-primary">
-                        {article.note}
-                      </p>
-                    ) : null}
-
-                    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                      {article.ctas.map((cta) => (
-                        <Link
-                          key={`${article.slug}-${cta.label}`}
-                          href={cta.href}
-                          className="inline-flex items-center justify-center rounded-btn bg-primary px-6 py-3 text-sm font-bold text-white transition hover:bg-primary-dark sm:text-base"
-                        >
-                          {cta.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-16 sm:py-20 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.25 }}
-            className="rounded-[2rem] bg-gradient-to-br from-primary to-primary-dark p-8 text-center text-white shadow-[0_32px_80px_-30px_rgba(8,22,43,0.55)] sm:p-10 md:p-12"
-          >
-            <span className="inline-block rounded-full bg-gold/20 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
-              Keep Reading
-            </span>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Ready to turn professional experience into a clearer next chapter?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
-              Explore resources, wellness content, and Nurse2Agency guidance built for nurses
-              who want to grow with intention.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Link
-                href="/resources"
-                className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary transition hover:scale-105 hover:bg-gold-dark"
-              >
-                Browse Resources
-              </Link>
-              <Link
-                href="/program"
-                className="rounded-btn border border-white/25 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:text-primary"
-              >
-                Explore Nurse2Agency
-              </Link>
+                  );
+                })}
+              </div>
             </div>
-          </motion.div>
+          </aside>
+
+          <motion.article
+            key={activeArticle.slug}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="overflow-hidden rounded-lg border border-primary/10 bg-white shadow-[0_24px_60px_-40px_rgba(11,31,58,0.45)]"
+          >
+            <div className="relative aspect-[16/7] min-h-[260px] overflow-hidden">
+              <Image
+                src={activeArticle.image}
+                alt={activeArticle.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 760px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
+                <span className="inline-flex rounded-full bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                  {activeArticle.category}
+                </span>
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-8 lg:p-10">
+              <h2
+                className={cx(
+                  'rounded-md text-3xl font-bold leading-tight text-primary transition sm:text-4xl',
+                  highlightedClass(titleBlockId(activeArticle))
+                )}
+              >
+                {activeArticle.title}
+              </h2>
+
+              <div className="mt-6 flex flex-col gap-3 border-y border-primary/10 py-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-primary">
+                    Article {activeArticleIndex + 1} of {articles.length}
+                  </p>
+                  <p className="text-sm text-gray-500">Female voice reader when available</p>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    disabled={!speechSupported}
+                    title="Read this article aloud with a female voice when your browser provides one"
+                    onClick={() => toggleReader(activeArticle)}
+                    className={cx(
+                      'inline-flex items-center justify-center gap-2 rounded-btn px-5 py-3 text-sm font-bold transition sm:text-base',
+                      speechSupported
+                        ? 'bg-gold text-primary hover:bg-gold-dark'
+                        : 'cursor-not-allowed bg-gray-200 text-gray-500'
+                    )}
+                  >
+                    <SpeakerIcon isPlaying={isPlayingActiveArticle} />
+                    {isPlayingActiveArticle
+                      ? 'Pause'
+                      : isPausedActiveArticle
+                        ? 'Resume'
+                        : 'Read aloud'}
+                  </button>
+
+                  {activeArticleIsReading ? (
+                    <button
+                      type="button"
+                      onClick={stopReader}
+                      className="inline-flex items-center justify-center rounded-btn border border-primary/15 px-5 py-3 text-sm font-bold text-primary transition hover:border-primary hover:bg-primary hover:text-white sm:text-base"
+                    >
+                      Stop
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="mt-8 space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
+                {activeArticle.intro.map((paragraph, index) => {
+                  const blockId = introBlockId(activeArticle, index);
+
+                  return (
+                    <p
+                      key={blockId}
+                      className={cx(
+                        'rounded-md px-1 py-1 transition-colors',
+                        highlightedClass(blockId)
+                      )}
+                    >
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </div>
+
+              <div className="mt-10 space-y-10">
+                {activeArticle.sections.map((section, sectionIndex) => {
+                  const headingId = sectionHeadingBlockId(activeArticle, sectionIndex);
+
+                  return (
+                    <section key={`${activeArticle.slug}-${section.heading}`} className="scroll-mt-28">
+                      <h3
+                        className={cx(
+                          'rounded-md px-1 py-1 text-2xl font-bold text-primary transition-colors',
+                          highlightedClass(headingId)
+                        )}
+                      >
+                        {section.heading}
+                      </h3>
+
+                      {section.paragraphs ? (
+                        <div className="mt-3 space-y-3 text-base leading-relaxed text-gray-700 sm:text-lg">
+                          {section.paragraphs.map((paragraph, paragraphIndex) => {
+                            const blockId = sectionParagraphBlockId(
+                              activeArticle,
+                              sectionIndex,
+                              paragraphIndex
+                            );
+
+                            return (
+                              <p
+                                key={blockId}
+                                className={cx(
+                                  'rounded-md px-1 py-1 transition-colors',
+                                  highlightedClass(blockId)
+                                )}
+                              >
+                                {paragraph}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      ) : null}
+
+                      {section.bullets ? (
+                        <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                          {section.bullets.map((bullet, bulletIndex) => {
+                            const blockId = sectionBulletBlockId(
+                              activeArticle,
+                              sectionIndex,
+                              bulletIndex
+                            );
+
+                            return (
+                              <li
+                                key={blockId}
+                                className={cx(
+                                  'flex items-start gap-3 rounded-lg border border-primary/10 bg-background p-4 text-sm leading-relaxed text-gray-700 transition-colors sm:text-base',
+                                  highlightedClass(blockId)
+                                )}
+                              >
+                                <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-gold" />
+                                <span>{bullet}</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      ) : null}
+                    </section>
+                  );
+                })}
+              </div>
+
+              {activeArticle.note ? (
+                <p
+                  className={cx(
+                    'mt-10 rounded-lg border border-gold/25 bg-gold/10 p-5 text-sm leading-relaxed text-primary',
+                    highlightedClass(noteBlockId(activeArticle))
+                  )}
+                >
+                  {activeArticle.note}
+                </p>
+              ) : null}
+
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                {activeArticle.ctas.map((cta) => (
+                  <Link
+                    key={`${activeArticle.slug}-${cta.label}`}
+                    href={cta.href}
+                    className="inline-flex items-center justify-center rounded-btn bg-primary px-6 py-3 text-sm font-bold text-white transition hover:bg-primary-dark sm:text-base"
+                  >
+                    {cta.label}
+                  </Link>
+                ))}
+              </div>
+
+              <nav
+                aria-label="Article navigation"
+                className="mt-10 flex flex-col gap-5 border-t border-primary/10 pt-6 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <button
+                  type="button"
+                  onClick={() => selectArticle(previousArticleIndex)}
+                  className="inline-flex items-center justify-center gap-2 rounded-btn border border-primary/15 px-5 py-3 text-sm font-bold text-primary transition hover:border-primary hover:bg-primary hover:text-white sm:text-base"
+                >
+                  <ArrowIcon direction="left" />
+                  Previous
+                </button>
+
+                <div className="flex items-center justify-center gap-2" aria-label="Blog pagination">
+                  {articles.map((article, index) => (
+                    <button
+                      key={article.slug}
+                      type="button"
+                      aria-label={`Open ${article.title}`}
+                      onClick={() => selectArticle(index)}
+                      className={cx(
+                        'h-2.5 rounded-full transition-all',
+                        index === activeArticleIndex
+                          ? 'w-8 bg-gold'
+                          : 'w-2.5 bg-primary/20 hover:bg-primary/40'
+                      )}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => selectArticle(nextArticleIndex)}
+                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-gold px-5 py-3 text-sm font-bold text-primary transition hover:bg-gold-dark sm:text-base"
+                >
+                  Next
+                  <ArrowIcon direction="right" />
+                </button>
+              </nav>
+            </div>
+          </motion.article>
+        </div>
+      </section>
+
+      <section className="bg-primary py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+          <span className="inline-block rounded-full bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-gold">
+            Keep Reading
+          </span>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+            Ready to turn professional experience into a clearer next chapter?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
+            Explore resources, wellness content, and Nurse2Agency guidance built for nurses
+            who want to grow with intention.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/resources"
+              className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary transition hover:bg-gold-dark"
+            >
+              Browse Resources
+            </Link>
+            <Link
+              href="/program"
+              className="rounded-btn border border-white/25 bg-white/10 px-8 py-4 text-lg font-semibold text-white transition hover:bg-white hover:text-primary"
+            >
+              Explore Nurse2Agency
+            </Link>
+          </div>
         </div>
       </section>
     </div>
