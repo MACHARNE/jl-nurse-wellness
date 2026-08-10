@@ -57,8 +57,8 @@ export default function TrustBar() {
               Farmasi Beauty & Wellness
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-gray-700 sm:text-base">
-              Shop trusted beauty and wellness products and discover flexible
-              income opportunities.
+              Shop for trusted beauty and wellness products and discover
+              flexible income opportunities.
             </p>
             <Link
               href="/farmasi"
