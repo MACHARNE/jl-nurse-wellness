@@ -19,7 +19,7 @@ export default function AboutJean() {
           >
             <div className="rounded-xl sm:rounded-2xl w-full max-w-sm mx-auto relative overflow-hidden shadow-2xl border-4 border-gold/20">
               <Image
-                src="/images/owner1.png"
+                src="/images/jeabkewis.jpeg"
                 alt="Jean Lewis"
                 width={700}
                 height={900}
