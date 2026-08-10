@@ -54,7 +54,7 @@ export default function AboutFullProfile() {
           <div className="space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
             <p>
               <strong>Jean Lewis</strong> is a dedicated nurse, entrepreneur, and founder
-              of <strong>JL Nurse 360</strong>, a platform created to empower nurses to
+              of <strong>JLNurse360</strong>, a platform created to empower nurses to
               expand beyond traditional roles and build meaningful, sustainable futures.
             </p>
             <p>
@@ -89,7 +89,7 @@ export default function AboutFullProfile() {
               Recognizing that nurses possess highly transferable skills beyond bedside care,
               Jean began exploring how healthcare professionals could leverage their
               expertise in business, branding, and product-based opportunities. This vision
-              led to the creation of <strong>JL Nurse 360</strong>, a platform that bridges
+              led to the creation of <strong>JLNurse360</strong>, a platform that bridges
               <strong> nursing, wellness, and entrepreneurship</strong>.
             </p>
           </div>
@@ -110,13 +110,13 @@ export default function AboutFullProfile() {
               </svg>
             </span>
             <h3 className="text-2xl font-bold text-primary sm:text-3xl">
-              Why <strong>JL Nurse 360</strong> Was Created
+              Why <strong>JLNurse360</strong> Was Created
             </h3>
           </div>
 
           <div className="space-y-4 text-base leading-relaxed text-gray-700 sm:text-lg">
             <p>
-              <strong>JL Nurse 360</strong> was created to solve a real and growing challenge:
+              <strong>JLNurse360</strong> was created to solve a real and growing challenge:
             </p>
             <p>Many nurses want more flexibility, more income, and more control but don&apos;t know where to start.</p>
             <p>Jean saw an opportunity to provide a structured, supportive pathway that helps nurses:</p>
@@ -145,7 +145,7 @@ export default function AboutFullProfile() {
 
           <p className="mt-6 text-base leading-relaxed text-gray-700 sm:text-lg">
             <strong>
-              JL Nurse 360 brings together three powerful areas-nursing, wellness, and
+              JLNurse360 brings together three powerful areas-nursing, wellness, and
               entrepreneurship into one unified platform designed specifically for nurses.
             </strong>
           </p>
@@ -216,7 +216,7 @@ export default function AboutFullProfile() {
               branding, there are opportunities available to you.
             </p>
             <p>
-              <strong>JL Nurse 360</strong> is here to guide you as you explore what&apos;s
+              <strong>JLNurse360</strong> is here to guide you as you explore what&apos;s
               possible beyond the bedside-and to support you in building a future that
               reflects your full potential.
             </p>

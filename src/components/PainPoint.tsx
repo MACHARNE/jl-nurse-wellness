@@ -25,7 +25,7 @@ export default function PainPoint() {
           className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto px-4"
         >
           Many nurses are overworked, financially stretched, and looking for something
-          more. JL Nurse 360 helps nurses explore a better path through
+          more. JLNurse360 helps nurses explore a better path through
           entrepreneurship, education, and wellness-focused opportunities.
         </motion.p>
       </div>

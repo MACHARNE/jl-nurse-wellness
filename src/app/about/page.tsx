@@ -6,13 +6,13 @@ import AboutCTA from '@/components/about/AboutCTA';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'About Jean Lewis RN | Nurse Entrepreneur and Founder of JL Nurse 360',
+  title: 'About Jean Lewis RN | Nurse Entrepreneur and Founder of JLNurse360',
   description:
-    'Meet Jean Lewis RN and learn how JL Nurse 360 helps Canadian nurses move from bedside work into entrepreneurship, wellness, and business ownership.',
+    'Meet Jean Lewis RN and learn how JLNurse360 helps Canadian nurses move from bedside work into entrepreneurship, wellness, and business ownership.',
   path: '/about',
   keywords: [
     'Jean Lewis RN',
-    'about JL Nurse 360',
+    'about JLNurse360',
     'nurse entrepreneur mentor',
     'Canadian nurse founder',
   ],

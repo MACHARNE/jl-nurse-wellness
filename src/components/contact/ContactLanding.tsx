@@ -35,7 +35,7 @@ export default function ContactLanding() {
             className="text-4xl font-bold text-primary sm:text-5xl md:text-6xl"
             style={{ textShadow: '0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(11,31,58,0.16), 0 12px 28px rgba(11,31,58,0.12)' }}
           >
-            Contact <span className="text-gold">JL Nurse 360</span>
+            Contact <span className="text-gold">JLNurse360</span>
           </motion.h1>
 
           <motion.p
@@ -80,7 +80,7 @@ export default function ContactLanding() {
               </span>
               <h2 className="mt-4 text-3xl font-bold text-primary">Send a message</h2>
               <p className="mt-3 text-charcoal/75">
-                Share your question or interest and the JL Nurse 360 team will follow up.
+                Share your question or interest and the JLNurse360 team will follow up.
               </p>
             </div>
 
@@ -98,7 +98,7 @@ export default function ContactLanding() {
                 <label className="mb-2 block text-sm font-medium text-charcoal">Email</label>
                 <input
                   type="email"
-                  placeholder="info@JLNurse360.com"
+                  placeholder="info@jlnurse360.com"
                   className="w-full rounded-btn border border-primary/10 bg-background px-4 py-3 text-charcoal outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/25"
                 />
               </div>
@@ -146,10 +146,10 @@ export default function ContactLanding() {
                 For general questions, collaborations, or next steps, reach out directly.
               </p>
               <a
-                href="mailto:info@JLNurse360.com"
+                href="mailto:info@jlnurse360.com"
                 className="mt-6 inline-flex items-center rounded-btn bg-gold px-6 py-3 font-semibold text-primary transition hover:bg-gold-dark"
               >
-                info@JLNurse360.com
+                info@jlnurse360.com
               </a>
             </div>
 
@@ -200,7 +200,7 @@ export default function ContactLanding() {
                 Prefer to choose a time directly?
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-white/80">
-                Use the JL Nurse 360 booking link to reserve a conversation with Jean and
+                Use the JLNurse360 booking link to reserve a conversation with Jean and
                 discuss Nurse2Agency, Farmasi, Kokoshea, or collaboration opportunities.
               </p>
               <div className="mt-8">

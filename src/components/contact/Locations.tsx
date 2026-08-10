@@ -14,7 +14,7 @@ const contactPoints = [
   {
     label: 'Email Access',
     subtitle: 'General inquiries',
-    detail: 'info@JLNurse360.com',
+    detail: 'info@jlnurse360.com',
     meta: 'Best for questions, collaborations, and follow-up',
     icon: 'EM',
   },
@@ -51,7 +51,7 @@ export default function Locations() {
             Contact Details
           </span>
           <h2 className="mb-4 text-3xl font-bold text-primary sm:text-4xl">
-            Reach JL Nurse 360 with confidence
+            Reach JLNurse360 with confidence
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
             Whether you are exploring nurse entrepreneurship, wellness support, or

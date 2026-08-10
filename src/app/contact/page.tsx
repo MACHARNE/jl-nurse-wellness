@@ -3,12 +3,12 @@ import ContactLanding from '@/components/contact/ContactLanding';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Contact JL Nurse 360',
+  title: 'Contact JLNurse360',
   description:
-    'Have questions about Nurse2Agency, Farmasi, Kokoshea, or working with Jean? Contact JL Nurse 360 and book a call.',
+    'Have questions about Nurse2Agency, Farmasi, Kokoshea, or working with Jean? Contact JLNurse360 and book a call.',
   path: '/contact',
   keywords: [
-    'contact JL Nurse 360',
+    'contact JLNurse360',
     'book a call with Jean Lewis',
     'nurse2agency contact',
     'Farmasi and Kokoshea contact',

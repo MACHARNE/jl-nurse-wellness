@@ -3,9 +3,9 @@ import BlogLanding from '@/components/blog/BlogLanding';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Blog | Nurse Entrepreneurship, Wellness, and Business Growth',
+  title: 'JLNurse360 Blog Architecture | Nurse Entrepreneurship and Business Growth',
   description:
-    'Read practical JL Nurse 360 blog content on nurse entrepreneurship, agency startup, self-care, wellness, and business growth in Canada.',
+    'Read JLNurse360 blog articles on nurse entrepreneurship, agency startup tips, beauty and wellness, self-care for nurses, and business growth in Canada.',
   path: '/blog',
   keywords: [
     'nurse entrepreneurship blog',

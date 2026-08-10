@@ -66,7 +66,7 @@ export default function ContactForm() {
             <div className="space-y-4">
               {[
                 { icon: 'Phone', title: 'Phone', value: '+1 (647) 774-8336' },
-                { icon: 'Email', title: 'Email', value: 'info@JLNurse360.com' },
+                { icon: 'Email', title: 'Email', value: 'info@jlnurse360.com' },
                 { icon: 'Web', title: 'Website', value: 'www.JLNurse360.com' },
                 { icon: 'Time', title: 'Response Time', value: 'Within 24 hours' },
               ].map((item, index) => (

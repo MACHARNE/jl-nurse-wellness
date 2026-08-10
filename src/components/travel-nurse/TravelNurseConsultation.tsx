@@ -545,14 +545,14 @@ function PageHero({
           <div className="flex items-center gap-4">
             <Image
               src="/images/fev.png"
-              alt="JL Nurse 360 logo"
+              alt="JLNurse360 logo"
               width={72}
               height={72}
               className="h-16 w-16 rounded-full bg-[#0b1f3a] object-contain p-1 ring-2 ring-[#c9a14a]"
             />
             <div>
               <p className="font-sans text-2xl font-black leading-tight tracking-normal text-[#0b1f3a]">
-                JL Nurse 360
+                JLNurse360
               </p>
               <p className="text-xs font-bold uppercase tracking-normal text-[#b57d18]">
                 Nursing &bull; Wellness &bull; Entrepreneurship
@@ -592,7 +592,7 @@ function OverviewHero() {
               Explore Travel Nursing Opportunities Across Canada &amp; the United States
             </div>
             <p className="mb-3 font-sans text-sm font-black uppercase tracking-normal text-[#b57d18]">
-              JL Nurse 360 Travel Nurse Consultation
+              JLNurse360 Travel Nurse Consultation
             </p>
             <h1 className="font-sans text-4xl font-black leading-tight tracking-normal text-[#0b1f3a] sm:text-5xl lg:text-6xl">
               Discover a Career Without Borders
@@ -816,7 +816,7 @@ function MeetJeanSection() {
           <div>
             <p className="mb-2 text-sm font-black uppercase tracking-normal text-[#b57d18]">Meet Jean Lewis</p>
             <h2 className="font-sans text-3xl font-black leading-tight tracking-normal text-[#0b1f3a] sm:text-4xl">
-              Founder of JL Nurse 360
+              Founder of JLNurse360
             </h2>
             <p className="mt-4 font-semibold text-primary">
               Registered Nurse, Travel Nurse, Clinical Nursing Instructor, Branding Consultant,
@@ -884,7 +884,7 @@ function ReceivePage() {
       <Section className="bg-[#0b1f3a] text-white">
         <Container>
           <SectionHeading
-            eyebrow="Why book with JL Nurse 360?"
+            eyebrow="Why book with JLNurse360?"
             title="Professional guidance for nurses planning their next move"
             description="The consultation combines travel nursing guidance, career planning, resume support, interview preparation, personal branding, and mentorship."
             tone="light"
@@ -1018,7 +1018,7 @@ function PackagesPage() {
             <div>
               <h2 className="font-sans text-2xl font-black tracking-normal text-[#0b1f3a]">Contact Us.</h2>
               <div className="mt-5 grid gap-3 text-sm text-slate-700">
-                <p className="font-bold text-[#0b1f3a]">JL Nurse 360</p>
+                <p className="font-bold text-[#0b1f3a]">JLNurse360</p>
                 <a href="mailto:info@jlnurse360.com" className="inline-flex items-center gap-3 transition hover:text-gold-dark">
                   <IconBadge name="file" size="sm" />
                   info@jlnurse360.com
@@ -1040,14 +1040,14 @@ function PackagesPage() {
             </div>
             <div className="border-t border-slate-200 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <p className="font-sans text-base font-black uppercase tracking-normal text-[#0b1f3a]">
-                JL Nurse 360: Nursing &bull; Wellness &bull; Entrepreneurship
+                JLNurse360: Nursing &bull; Wellness &bull; Entrepreneurship
               </p>
               <p className="mt-3 leading-relaxed text-slate-600">
                 Helping nurses grow their careers through education, coaching, wellness, travel
                 nursing, and professional development across Canada and the United States.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-slate-500">
-                Disclaimer: JL Nurse 360 provides educational resources, career coaching, and
+                Disclaimer: JLNurse360 provides educational resources, career coaching, and
                 professional development services. Employment opportunities, compensation, travel
                 benefits, licensing requirements, and assignment availability are determined by
                 individual healthcare employers, travel nursing agencies, and provincial,

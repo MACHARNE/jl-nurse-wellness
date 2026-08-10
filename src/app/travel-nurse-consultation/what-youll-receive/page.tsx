@@ -5,7 +5,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: "What You'll Receive | Travel Nurse Consultation",
   description:
-    'Review what nurses receive during the JL Nurse 360 travel nurse consultation, including career assessment, Canada and U.S. roadmap, coaching, resources, and Jean Lewis guidance.',
+    'Review what nurses receive during the JLNurse360 travel nurse consultation, including career assessment, Canada and U.S. roadmap, coaching, resources, and Jean Lewis guidance.',
   path: '/travel-nurse-consultation/what-youll-receive',
   keywords: [
     'travel nurse consultation resources',

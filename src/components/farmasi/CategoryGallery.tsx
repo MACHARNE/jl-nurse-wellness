@@ -104,7 +104,7 @@ export default function CategoryGallery() {
           onMouseEnter={() => setAutoplay(false)}
           onMouseLeave={() => setAutoplay(true)}
         >
-          <div className="flex min-h-[300px] items-center rounded-2xl bg-white p-8 shadow-xl md:p-10">
+          <div className="flex min-h-75 items-center rounded-2xl bg-white p-8 shadow-xl md:p-10">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}

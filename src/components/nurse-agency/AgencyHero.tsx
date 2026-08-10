@@ -6,10 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const heroImages = [
-  '/images/nurse-agency/hero-1.jpg',
-  '/images/nurse-agency/hero-2.jpg',
-  '/images/nurse-agency/hero-3.jpg',
-  '/images/nurse-agency/hero-4.jpg',
+  '/images/nurse-agency/financial.jpg',
 ];
 
 export default function AgencyHero() {
@@ -37,7 +34,8 @@ export default function AgencyHero() {
           >
             <Image
               src={heroImages[currentImage]}
-              alt={`Hero background ${currentImage + 1}`}
+              alt=""
+              aria-hidden="true"
               fill
               className="object-cover"
               priority
@@ -125,7 +123,7 @@ export default function AgencyHero() {
             className="mb-8 mx-auto max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-lg text-charcoal shadow-xl backdrop-blur-sm sm:text-xl md:text-2xl"
             style={{ textShadow: '0 1px 0 rgba(255,255,255,0.72), 0 8px 18px rgba(11,31,58,0.08)' }}
           >
-            JL Nurse 360 helps RPNs and RNs in Canada grow through nurse
+            Nurse2Agency helps RPNs and RNs in Canada grow through nurse
             entrepreneurship, wellness products, and practical business guidance.
           </motion.p>
 

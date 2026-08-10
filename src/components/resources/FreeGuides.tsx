@@ -13,7 +13,7 @@ type Guide = {
 
 const guides: Guide[] = [
   {
-    title: 'Free Nurse Agency Starter Guide',
+    title: 'Complimentary Agency Starter Guide',
     description:
       'A practical starting point for nurses ready to explore agency ownership with more clarity.',
     iconShell: 'bg-primary/10',
@@ -96,7 +96,7 @@ export default function FreeGuides() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            Free <span className="text-gold">Nuse Agency Starter Guid.</span>
+            Complimentary <span className="text-gold">Agency Starter Guide</span>
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
             Explore curated content ideas designed to support nurse entrepreneurship,

@@ -13,14 +13,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-4">
           <div className="text-center sm:text-left">
-            <h3 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">JL Nurse 360</h3>
+            <h3 className="mb-3 text-lg font-bold sm:mb-4 sm:text-xl">JLNurse360</h3>
             <p className="text-xs text-gray-300 sm:text-sm">
               Helping Canadian nurses transition from bedside to business ownership.
             </p>
             <div className="mt-4 space-y-2 text-xs text-gray-300 sm:text-sm">
               <p>
-                <a href="mailto:info@JLNurse360.com" className="transition hover:text-gold">
-                  info@JLNurse360.com
+                <a href="mailto:info@jlnurse360.com" className="transition hover:text-gold">
+                  info@jlnurse360.com
                 </a>
               </p>
               <p>
@@ -88,8 +88,8 @@ export default function Footer() {
             <div className="space-y-2 text-xs text-gray-400 sm:text-sm">
               <p>
                 <span className="font-semibold">Email:</span>{' '}
-                <a href="mailto:info@JLNurse360.com" className="transition hover:text-gold">
-                  info@JLNurse360.com
+                <a href="mailto:info@jlnurse360.com" className="transition hover:text-gold">
+                  info@jlnurse360.com
                 </a>
               </p>
               <p>
@@ -135,7 +135,7 @@ export default function Footer() {
                 <span className="font-semibold text-white">Disclaimer</span>
               </p>
               <p>
-                JL Nurse 360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
+                JLNurse360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
               </p>
             </div>
           </div>
@@ -145,13 +145,13 @@ export default function Footer() {
           <div className="rounded-lg bg-gray-900/40 p-4 text-xs text-gray-400">
             <p className="font-semibold text-white">Disclaimer</p>
             <p className="mt-2">
-              JL Nurse 360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
+              JLNurse360 provides educational and informational content. Users should seek appropriate legal, regulatory, financial, and professional advice where required.
             </p>
           </div>
         </div>
 
         <div className="mt-6 border-t border-gray-800 pt-4 text-center text-xs text-gray-400 sm:mt-8 sm:pt-6 sm:text-sm md:mt-12 md:pt-8">
-          <p>Copyright {currentYear} JL Nurse 360. All rights reserved. Empowering Canadian nurses.</p>
+          <p>Copyright {currentYear} JLNurse360. All rights reserved. Empowering Canadian nurses.</p>
         </div>
       </div>
     </footer>
