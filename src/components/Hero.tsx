@@ -72,14 +72,6 @@ export default function Hero() {
               }
             `}</style>
 
-            <p
-              className="mx-auto mb-6 max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-base font-semibold leading-relaxed text-charcoal shadow-2xl backdrop-blur-xl sm:mb-8 sm:text-lg md:text-xl"
-              style={{ textShadow: "0 1px 0 rgba(255,255,255,0.82), 0 8px 18px rgba(11,31,58,0.08)" }}
-            >
-              JL Nurse 360 helps RPNs and RNs in Canada grow through nurse
-              entrepreneurship, wellness products, and practical business guidance.
-            </p>
-
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
                 href="/contact#strategy-call"
