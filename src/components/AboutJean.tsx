@@ -42,7 +42,7 @@ export default function AboutJean() {
 
             <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-6 sm:mb-8 max-w-2xl lg:mx-0 mx-auto">
               Jean Lewis is a nurse entrepreneur passionate about helping nurses create
-              more freedom, confidence, and financial growth. Through JL Nurse 360, she
+              more freedom, confidence, and financial growth. Through JLNurse360, she
               provides guidance for nurses who want to build businesses, develop new
               income streams, and embrace wellness as part of a more balanced lifestyle.
             </p>
