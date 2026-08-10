@@ -592,7 +592,7 @@ function OverviewHero() {
               Explore Travel Nursing Opportunities Across Canada &amp; the United States
             </div>
             <p className="mb-3 font-sans text-sm font-black uppercase tracking-normal text-[#b57d18]">
-              JLNurse360 Travel Nurse Consultation
+              JL Nurse 360 Travel Nurse Consultation
             </p>
             <h1 className="font-sans text-4xl font-black leading-tight tracking-normal text-[#0b1f3a] sm:text-5xl lg:text-6xl">
               Discover a Career Without Borders

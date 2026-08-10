@@ -12,7 +12,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Kokoshea Skincare',
   description:
-    'Explore Kokoshea natural skincare and shea-based wellness products through JLNurse360, with product highlights, benefits, and a polished shopping journey.',
+    'Explore Kokoshea natural skincare and shea-based wellness products through JL Nurse 360, with product highlights, benefits, and a polished shopping journey.',
   path: '/kokoshea',
   keywords: [
     'Kokoshea skincare',

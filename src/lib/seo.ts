@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
 export const siteConfig = {
-  name: 'JLNurse360',
+  name: 'JL Nurse 360',
   url: 'https://jlnursewellness.com',
   description:
-    'JLNurse360 helps Canadian nurses build income, wellness, and business ownership through nurse entrepreneurship, wellness products, and practical guidance.',
+    'JL Nurse 360 helps Canadian nurses build income, wellness, and business ownership through nurse entrepreneurship, wellness products, and practical guidance.',
   defaultImage: '/images/fev.png',
 };
 

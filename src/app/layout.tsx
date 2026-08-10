@@ -30,7 +30,7 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'JLNurse360',
+  name: 'JL Nurse 360',
   url: siteConfig.url,
   logo: `${siteConfig.url}${siteConfig.defaultImage}`,
   founder: 'Jean Lewis RN',
@@ -38,9 +38,9 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title: 'JLNurse360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
+    title: 'JL Nurse 360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
     description:
-      'JLNurse360 helps Canadian nurses grow income beyond the bedside through nurse entrepreneurship, wellness products, and practical business guidance.',
+      'JL Nurse 360 helps Canadian nurses grow income beyond the bedside through nurse entrepreneurship, wellness products, and practical business guidance.',
     path: '/',
     keywords: [
       'nurse entrepreneurship Canada',
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
     ],
   }),
   title: {
-    default: 'JLNurse360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
-    template: '%s | JLNurse360',
+    default: 'JL Nurse 360 | Nurse Entrepreneurship, Wellness, and Income in Canada',
+    template: '%s | JL Nurse 360',
   },
   icons: {
     icon: '/images/fev.png',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   authors: [{ name: 'Jean Lewis RN' }],
   creator: 'Jean Lewis RN',
-  publisher: 'JLNurse360',
+  publisher: 'JL Nurse 360',
   formatDetection: {
     email: false,
     address: false,

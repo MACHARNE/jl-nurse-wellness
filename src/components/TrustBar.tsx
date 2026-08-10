@@ -30,7 +30,7 @@ export default function TrustBar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="section-intro mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-gold sm:text-base">
-            3 Pillars of JL Nurse 360
+            3 Pillars of JLNurse360
           </p>
           <h2 className="mt-2 text-3xl font-bold text-primary sm:text-4xl">
             One Platform. Three Growth Paths.

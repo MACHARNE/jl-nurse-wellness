@@ -12,7 +12,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'Farmasi for Nurses | Skincare, Wellness Products, and Flexible Income',
   description:
-    'Discover Farmasi with JLNurse360 for skincare, beauty, wellness products, and a flexible income opportunity that fits around nursing.',
+    'Discover Farmasi with JL Nurse 360 for skincare, beauty, wellness products, and a flexible income opportunity that fits around nursing.',
   path: '/farmasi',
   keywords: [
     'Farmasi Canada nurse',
