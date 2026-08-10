@@ -17,13 +17,13 @@ export default function AboutJean() {
             viewport={{ once: true }}
             className="order-2 lg:order-1 mt-8 lg:mt-0"
           >
-            <div className="rounded-xl sm:rounded-2xl w-full max-w-sm mx-auto relative overflow-hidden shadow-2xl border-4 border-gold/20">
+            <div className="rounded-xl sm:rounded-2xl w-full max-w-[340px] mx-auto relative overflow-hidden shadow-2xl border-4 border-gold/20 aspect-[9/16] bg-primary-dark">
               <Image
                 src="/images/jeabkewis.jpeg"
                 alt="Jean Lewis"
                 width={700}
                 height={900}
-                className="w-full h-[420px] sm:h-[520px] object-cover"
+                className="h-full w-full object-cover object-top"
               />
             </div>
           </motion.div>
