@@ -1,6 +1,7 @@
 // src/app/program/page.tsx
 import { Metadata } from 'next';
 import AgencyHero from '@/components/nurse-agency/AgencyHero';
+import AgencyIntro from '@/components/nurse-agency/AgencyIntro';
 import WhoItsFor from '@/components/nurse-agency/WhoItsFor';
 import WhyNursesEntrepreneurs from '@/components/nurse-agency/WhyNursesEntrepreneurs';
 import ProgramBenefits from '@/components/nurse-agency/ProgramBenefits';
@@ -26,6 +27,9 @@ export default function NurseAgencyPage() {
     <>
       <div id="program-overview">
         <AgencyHero />
+      </div>
+      <div id="nurse2agency-intro">
+        <AgencyIntro />
       </div>
       <div id="who-its-for">
         <WhoItsFor />

@@ -78,7 +78,7 @@ export default function AgencyHero() {
           transition={{ duration: 1 }}
           className="text-center max-w-4xl mx-auto"
         >
-          {/* Main heading with staggered letters */}
+          {/* Main heading with staggered reveal */}
           <motion.h1
             initial="hidden"
             animate="visible"
@@ -92,20 +92,9 @@ export default function AgencyHero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6"
             style={{ textShadow: '0 1px 0 rgba(255,255,255,0.92), 0 4px 12px rgba(11,31,58,0.16), 0 12px 28px rgba(11,31,58,0.12)' }}
           >
-            {'From Nurse to '.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5 }}
-                className={char === ' ' ? 'mr-2' : ''}
-              >
-                {char}
-              </motion.span>
-            ))}
-            <span className="text-gold">Agency Owner</span>
+            Helping Nurses Build{' '}
+            <span className="text-gold">Income, Wellness, & Freedom</span> Beyond the
+            Bedside
           </motion.h1>
 
           {/* Animated underline */}
@@ -115,17 +104,6 @@ export default function AgencyHero() {
             transition={{ duration: 1, delay: 1.2 }}
             className="h-1 w-24 bg-gold mx-auto mb-6"
           />
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mb-8 mx-auto max-w-2xl rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-lg text-charcoal shadow-xl backdrop-blur-sm sm:text-xl md:text-2xl"
-            style={{ textShadow: '0 1px 0 rgba(255,255,255,0.72), 0 8px 18px rgba(11,31,58,0.08)' }}
-          >
-            Nurse2Agency helps RPNs and RNs in Canada grow through nurse
-            entrepreneurship, wellness products, and practical business guidance.
-          </motion.p>
 
           {/* Floating scroll indicator */}
           <motion.div

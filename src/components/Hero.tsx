@@ -49,46 +49,22 @@ export default function Hero() {
         style={{ animationDelay: "2s" }}
       />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 md:py-24">
-        <div className="grid w-full items-center gap-8 md:gap-12">
-          <div className="text-center">
-            <h1 className="mb-4 text-3xl font-bold leading-tight text-primary sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
-              <span className="inline-flex items-center gap-2 sm:gap-3">
-                <span className="inline-block h-2 w-2 flex-shrink-0 rounded-full bg-gold animate-pulse aspect-square sm:h-2.5 sm:w-2.5" />
-                <span>
-                  Helping Nurses Build{" "}
-                  <span className="text-gold">Income, Wellness, & Freedom</span>{" "}
-                  Beyond the Bedside
-                </span>
-              </span>
-            </h1>
+      <h1 className="sr-only">JLNurse360</h1>
 
-            <style jsx>{`
-              h1 {
-                text-shadow:
-                  0 1px 0 rgba(255, 255, 255, 0.9),
-                  0 3px 10px rgba(11, 31, 58, 0.18),
-                  0 10px 24px rgba(11, 31, 58, 0.14);
-              }
-            `}</style>
-
-            <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-              <Link
-                href="/contact#strategy-call"
-                className="rounded-btn border border-gold/30 bg-gold px-6 py-3 text-center text-sm font-bold text-primary-dark shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-gold-dark sm:px-8 sm:py-4 sm:text-base"
-                style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
-              >
-                Book a Free Strategy Call
-              </Link>
-              <Link
-                href="/#lead-magnet"
-                className="rounded-btn border border-primary/15 bg-white/85 px-6 py-3 text-center text-sm font-bold text-primary shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white hover:text-primary-dark sm:px-8 sm:py-4 sm:text-base"
-              >
-                Download Free Nurse Starter Guide
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-col gap-2 rounded-xl bg-black/90 p-2 shadow-2xl sm:bottom-6 sm:left-auto sm:right-6 sm:flex-row sm:gap-3 sm:p-3">
+        <Link
+          href="/contact#strategy-call"
+          className="rounded-btn border border-gold/30 bg-gold px-5 py-3 text-center text-sm font-bold text-primary-dark transition-all duration-300 hover:scale-105 hover:bg-gold-dark sm:px-6 sm:text-base"
+          style={{ textShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
+        >
+          Book a Free Strategy Call
+        </Link>
+        <Link
+          href="/#lead-magnet"
+          className="rounded-btn border border-primary/15 bg-white px-5 py-3 text-center text-sm font-bold text-primary transition-all duration-300 hover:scale-105 hover:text-primary-dark sm:px-6 sm:text-base"
+        >
+          Download Free Nurse Starter Guide
+        </Link>
       </div>
     </section>
   );
