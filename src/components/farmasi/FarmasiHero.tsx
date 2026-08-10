@@ -9,13 +9,13 @@ export default function FarmasiHero() {
     <>
       <section className="relative flex min-h-[72vh] items-center justify-center overflow-hidden bg-black">
         <video
-          src="/video/FARMASI.mp4"
+          src="/images/farmasi/farmasi (1).mp4"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="h-full min-h-[72vh] w-full object-contain object-center"
+          className="h-full min-h-[72vh] w-full object-cover object-center"
         />
       </section>
 

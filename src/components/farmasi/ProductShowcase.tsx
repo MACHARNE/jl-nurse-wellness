@@ -7,6 +7,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
+type ProductMedia = {
+  src: string;
+  alt: string;
+  fit?: 'cover' | 'contain';
+};
+
+const farmasiMedia = (filename: string) => `/images/farmasi/${filename}`;
+
 const products = [
   {
     id: 1,
@@ -22,6 +30,12 @@ const products = [
     buttonLink: '/farmasi/skincare',
     bgColor: 'bg-amber-50',
     image: '/images/prenumskincare1.png',
+    gallery: [
+      { src: farmasiMedia('farmasi (1).jpeg'), alt: 'Farmasi skincare cream', fit: 'cover' },
+      { src: farmasiMedia('farmasi (2).jpeg'), alt: 'Farmasi foaming cleanser', fit: 'contain' },
+      { src: farmasiMedia('farmasi (5).jpeg'), alt: 'Farmasi skincare collection', fit: 'contain' },
+      { src: farmasiMedia('farmasi (9).jpeg'), alt: 'Farmasi skincare essentials', fit: 'contain' },
+    ] satisfies ProductMedia[],
   },
   {
     id: 2,
@@ -37,6 +51,15 @@ const products = [
     buttonLink: '/farmasi/makeup',
     bgColor: 'bg-rose-50',
     image: '/images/makeup1.png',
+    gallery: [
+      { src: farmasiMedia('farmasi (10).jpeg'), alt: 'Farmasi lip color display', fit: 'cover' },
+      { src: farmasiMedia('farmasi (12).jpeg'), alt: 'Farmasi makeup product table', fit: 'cover' },
+      { src: farmasiMedia('farmasi (13).jpeg'), alt: 'Farmasi eye makeup display', fit: 'cover' },
+      { src: farmasiMedia('farmasi (14).jpeg'), alt: 'Farmasi brush and color products', fit: 'cover' },
+      { src: farmasiMedia('farmasi (15).jpeg'), alt: 'Farmasi beauty products display', fit: 'cover' },
+      { src: farmasiMedia('farmasi (17).jpeg'), alt: 'Farmasi event product spread', fit: 'cover' },
+      { src: farmasiMedia('farmasi (19).jpeg'), alt: 'Farmasi complexion and color products', fit: 'cover' },
+    ] satisfies ProductMedia[],
   },
   {
     id: 3,
@@ -52,6 +75,12 @@ const products = [
     buttonLink: '/farmasi/essentials',
     bgColor: 'bg-green-50',
     image: '/images/dailyessentials1.png',
+    gallery: [
+      { src: farmasiMedia('farmasi (3).jpeg'), alt: 'Farmasi daily care display', fit: 'cover' },
+      { src: farmasiMedia('farmasi (7).jpeg'), alt: 'Farmasi daily essentials kit', fit: 'cover' },
+      { src: farmasiMedia('farmasi (8).jpeg'), alt: 'Farmasi personal care products', fit: 'cover' },
+      { src: farmasiMedia('farmasi (18).jpeg'), alt: 'Farmasi everyday beauty products', fit: 'cover' },
+    ] satisfies ProductMedia[],
   },
   {
     id: 4,
@@ -67,6 +96,12 @@ const products = [
     buttonLink: '/farmasi/nutrition',
     bgColor: 'bg-blue-50',
     image: '/images/HealthNutrition1.webp',
+    gallery: [
+      { src: farmasiMedia('farmasi (4).jpeg'), alt: 'Farmasi health and beauty boost', fit: 'contain' },
+      { src: farmasiMedia('farmasi (6).jpeg'), alt: 'Farmasi nutrition support products', fit: 'contain' },
+      { src: farmasiMedia('farmasi (11).jpeg'), alt: 'Farmasi wellness color essentials', fit: 'cover' },
+      { src: farmasiMedia('farmasi (16).jpeg'), alt: 'Farmasi wellness product table', fit: 'cover' },
+    ] satisfies ProductMedia[],
   },
 ];
 
@@ -97,30 +132,55 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
               transition={{ duration: 0.5, delay: 0.3 }}
               className="h-full"
             >
-              {product.image ? (
-                <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl shadow-xl lg:min-h-[520px]">
+              <div className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl bg-white p-3 shadow-xl lg:min-h-[520px]">
+                <div className="relative min-h-[300px] flex-1 overflow-hidden rounded-xl bg-gray-50 lg:min-h-[360px]">
                   <Image
                     src={product.image}
                     alt={product.title}
                     fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain p-4 transition-transform duration-700 hover:scale-105"
                   />
                 </div>
-              ) : (
-                <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border border-primary/10 bg-gradient-to-br from-white to-primary/5 p-8 shadow-xl lg:min-h-[520px]">
-                  <div className="text-center">
-                    <span className="inline-block rounded-full bg-gold/20 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold">
-                      Farmasi Category
-                    </span>
-                    <h3 className="mt-4 text-2xl font-bold text-primary sm:text-3xl">
-                      {product.title}
-                    </h3>
-                    <p className="mt-3 text-gray-600">
-                      Product visuals removed. Explore details in this section.
-                    </p>
-                  </div>
+
+                <div className="mt-3 overflow-hidden rounded-xl border border-primary/10 bg-background p-3">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/70">
+                    Product gallery
+                  </p>
+                  <motion.div
+                    animate={isInView ? { x: ['0%', '-50%'] } : { x: '0%' }}
+                    transition={{
+                      duration: product.gallery.length > 4 ? 24 : 18,
+                      ease: 'linear',
+                      repeat: Infinity,
+                    }}
+                    className="flex w-max gap-3"
+                  >
+                    {[...product.gallery, ...product.gallery].map((media, mediaIndex) => (
+                      <motion.div
+                        key={`${product.id}-${media.src}-${mediaIndex}`}
+                        initial={{ opacity: 0, y: 18 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.45, delay: 0.45 + (mediaIndex % product.gallery.length) * 0.08 }}
+                        whileHover={{ y: -4, scale: 1.03 }}
+                        className="relative h-24 w-32 shrink-0 overflow-hidden rounded-lg border border-white bg-white shadow-sm sm:h-28 sm:w-40"
+                      >
+                        <Image
+                          src={media.src}
+                          alt={media.alt}
+                          fill
+                          sizes="160px"
+                          className={
+                            media.fit === 'contain'
+                              ? 'object-contain p-2'
+                              : 'object-cover'
+                          }
+                        />
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </div>
-              )}
+              </div>
             </motion.div>
           </motion.div>
 
