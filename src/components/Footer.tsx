@@ -66,6 +66,14 @@ export default function Footer() {
             <h4 className="mb-3 text-sm font-bold sm:mb-4 sm:text-base">Contact Us</h4>
             <div className="space-y-2 text-xs text-gray-400 sm:text-sm">
               <p>
+                <span className="font-semibold">Address:</span>{' '}
+                <a href="mailto:info@jlnurse360.com" className="transition hover:text-gold">
+                  JLNurse360.
+3601 Hwy 7 East, Suite 1005, 
+Markham, L3R 0M3. Ontario. Canada
+                </a>
+              </p>
+              <p>
                 <span className="font-semibold">Email:</span>{' '}
                 <a href="mailto:info@jlnurse360.com" className="transition hover:text-gold">
                   info@jlnurse360.com
@@ -80,12 +88,12 @@ export default function Footer() {
               <p>
                 <span className="font-semibold">Website:</span>{' '}
                 <a
-                  href="https://www.JLNurse360.com"
+                  href="https://www.jlnurse360.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition hover:text-gold"
                 >
-                  www.JLNurse360.com
+                  www.jlnurse360.com
                 </a>
               </p>
             </div>

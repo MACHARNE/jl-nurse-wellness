@@ -640,13 +640,22 @@ function OverviewHero() {
           >
             <div className="relative min-h-[280px] overflow-hidden rounded-lg border border-gold/45 bg-primary shadow-2xl shadow-primary/15 sm:min-h-[390px]">
               <Image
-                src="/images/travel-nurse/infopgraph.jpeg"
+                src="/images/travel-nurse/infopgraph.png"
                 alt="Travel Nurse Consultation infographic"
                 fill
                 priority
                 sizes="(min-width: 1024px) 44vw, 100vw"
                 className="object-cover object-top"
               />
+              <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white rounded-md p-1 shadow-lg border border-gold/30">
+                <Image
+                  src="/images/travel-nurse/qrcode.jpeg"
+                  alt="Scan QR code for travel nurse consultation"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 sm:w-20 sm:h-20"
+                />
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {benefitCards.slice(0, 4).map((item) => (

@@ -813,13 +813,13 @@ export default function BlogLanding() {
             className="relative"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-[0_32px_80px_-32px_rgba(8,22,43,0.5)]">
-              <Image
-                src="/images/nurse-enter.jpg"
-                alt="Nurse entrepreneur planning a business next step"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 45vw"
+              <video
+                src="/video/blogvid1.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
