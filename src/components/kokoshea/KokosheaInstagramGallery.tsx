@@ -41,31 +41,31 @@ const instagramPosts: InstagramPost[] = [
     permalink: 'https://www.instagram.com/p/CrMWNEqpvaS/',
     mediaType: 'image',
     label: 'Skincare shelf detail',
-    image: '/images/face-cream.jpeg',
+    image: '/images/EKOKOSHA_CREAMSALL-IN1-VIEW.jpeg',
   },
   {
     permalink: 'https://www.instagram.com/p/CrMUqkhJPuD/',
     mediaType: 'image',
     label: 'Product lineup story',
-    image: '/images/Moisturizers (1).jpeg',
+    image: '/images/EKOKOSHA-ALL-PRODUCS-INVIEW.jpeg',
   },
   {
     permalink: 'https://www.instagram.com/reel/CrMmwPUu404/',
     mediaType: 'video',
     label: 'Reel feature highlight',
-    image: '/images/SERUM (1).jpeg',
+    image: '/images/SERUM (4).jpeg',
   },
   {
     permalink: 'https://www.instagram.com/p/C0hbcdmJZzA/',
     mediaType: 'image',
     label: 'Glow-centered skincare',
-    image: '/images/lipgloss (1).jpeg',
+    image: '/images/EKOKOSHA=GLOSS.jpeg',
   },
   {
     permalink: 'https://www.instagram.com/p/CwBF_KbJnIe/',
     mediaType: 'image',
     label: 'Brand aesthetic post',
-    image: '/images/EKOKOSHA-ALL-NATURAL-TURMERIC-SHEABUTTER-OPEND.jpeg',
+    image: '/images/EKOKOSHA-ALL-NATURAL-TURMERIC-SHEABUTTEROPENSIZED.jpeg',
   },
   {
     permalink: 'https://www.instagram.com/p/CvPrqphM73K/',
@@ -77,13 +77,13 @@ const instagramPosts: InstagramPost[] = [
     permalink: 'https://www.instagram.com/reel/CiNbHLePHyb/',
     mediaType: 'video',
     label: 'Reel wellness moment',
-    image: '/images/EKOKOSHA_ANTI-SGING-SERUM_&ANTI-AGING-NIGHT-SCREM-DIFF-VIEW.jpeg',
+    image: '/images/EKOKOSHA_ANTI-SGING-SERUM_&ANTI-AGING-NIGHT-SCREM-DFF-VIEW.jpeg',
   },
   {
     permalink: 'https://www.instagram.com/p/CM3tyjijuG-/',
     mediaType: 'image',
     label: 'Collection showcase',
-    image: '/images/Moisturizers (3).jpeg',
+    image: '/images/EKOKOSHA_HYDRA-DRY_FORNORMAL-TO-DRY-SKIN.jpeg',
   },
 ];
 

@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 const jeanImages = [
   { src: '/images/jeabkewis.jpeg', alt: 'Jean Lewis portrait' },
   { src: '/images/jeabkewis2.jpeg', alt: 'Jean Lewis smiling portrait' },
-  { src: '/images/jeabkewis3.png', alt: 'Jean Lewis professional portrait' },
+  { src: '/images/jeabkewis31.png', alt: 'Jean Lewis professional portrait' },
   { src: '/images/jeabkewis4.png', alt: 'Jean Lewis wellness portrait' },
 ];
 

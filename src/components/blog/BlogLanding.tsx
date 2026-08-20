@@ -823,12 +823,8 @@ export default function BlogLanding() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-                  Featured Reading
-                </p>
-                <p className="mt-3 max-w-sm text-xl font-semibold text-white">
-                  Content for nurses moving from professional experience into practical
-                  business growth.
+                <p className="inline-block max-w-sm -rotate-1 bg-white px-4 py-3 font-serif text-2xl font-semibold italic text-black shadow-lg sm:text-3xl">
+                  Nurses Need healing too!
                 </p>
               </div>
             </div>

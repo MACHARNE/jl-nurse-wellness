@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { kokosheaShopUrl } from '@/lib/kokosheaShop';
 
 export default function DualIncome() {
   return (
@@ -53,7 +54,7 @@ export default function DualIncome() {
               essentials.
             </p>
             <Link
-              href="/kokoshea#kokoshea-products"
+              href={kokosheaShopUrl}
               className="mt-6 inline-flex rounded-btn bg-gold px-6 py-3 text-sm font-semibold text-primary-dark transition hover:bg-gold-dark sm:text-base"
             >
               Shop Kokoshea

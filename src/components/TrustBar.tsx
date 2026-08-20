@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { kokosheaShopUrl } from "@/lib/kokosheaShop";
 
 export default function TrustBar() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -77,7 +78,7 @@ export default function TrustBar() {
               confidence.
             </p>
             <Link
-              href="/kokoshea"
+              href={kokosheaShopUrl}
               className="mt-5 inline-flex rounded-btn bg-gold px-5 py-2.5 text-sm font-semibold text-primary-dark transition hover:bg-gold-dark"
             >
               Shop Kokoshea

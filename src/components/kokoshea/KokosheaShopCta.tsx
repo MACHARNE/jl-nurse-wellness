@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { kokosheaShopUrl } from '@/lib/kokosheaShop';
 
 export default function KokosheaShopCta() {
   const ref = useRef(null);
@@ -45,7 +46,7 @@ export default function KokosheaShopCta() {
           className="mt-10 flex justify-center"
         >
           <Link
-            href="/kokoshea#kokoshea-products"
+            href={kokosheaShopUrl}
             className="rounded-btn bg-gold px-8 py-4 text-lg font-bold text-primary shadow-2xl transition hover:scale-105 hover:bg-gold-dark"
           >
             Shop Kokoshea Now
