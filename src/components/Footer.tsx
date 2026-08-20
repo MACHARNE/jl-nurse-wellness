@@ -24,8 +24,8 @@ export default function Footer() {
                 </a>
               </p>
               <p>
-                <a href="tel:+16477748336" className="transition hover:text-gold">
-                  Jean Lewis +1 (647) 774-8336
+                <a href="tel:+12893017351" className="transition hover:text-gold">
+                  Jean Lewis +1 (289) 301-7351
                 </a>
               </p>
               <p>
@@ -81,8 +81,8 @@ Markham, L3R 0M3. Ontario. Canada
               </p>
               <p>
                 <span className="font-semibold">Phone:</span>{' '}
-                <a href="tel:+16477748336" className="transition hover:text-gold">
-                  +1 (647) 774-8336
+                <a href="tel:+12893017351" className="transition hover:text-gold">
+                  +1 (289) 301-7351
                 </a>
               </p>
               <p>
